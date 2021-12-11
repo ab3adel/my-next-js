@@ -16,10 +16,7 @@ import styles from '../../styles/details.module.css'
             
         }} 
                   onClose={()=>props.setOpen(false)}>
-                <DialogContent sx={{
-                    maxWidht:"100%",
-                    maxHeight:"100%"
-                }}>
+                <DialogContent >
                 <img id="bigImage" className={styles.bigImage}
                                 src={props.src? props.src :"/static/python.png"}
                                />
