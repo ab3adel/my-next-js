@@ -4,7 +4,7 @@ import
  }
 from '@mui/material'
 import styles from '../../styles/details.module.css'
- const MyDialog=(props:{open:boolean,setOpen:Function,src:string|null})=>{
+ const MyDialog=(props:any)=>{
     return (
         <Dialog open={props.open} sx={{
             maxHeight:"100%",
