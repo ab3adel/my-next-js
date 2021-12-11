@@ -1,4 +1,4 @@
-export const sources=[
+export default const sources=[
  {
     id:4,
     title:"Implement  responsive UI  ",
