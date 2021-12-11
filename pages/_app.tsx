@@ -8,7 +8,7 @@ Toolbar,
 Box
 }
 from '@mui/material'
-import {Header} from './header'
+import Header from './header'
 export const animateContext= createContext(null)
  const  App =  ({Component,pageProps}:AppProps) =>{
  
