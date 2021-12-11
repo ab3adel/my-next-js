@@ -1,4 +1,4 @@
- const sources=[
+ export default sources=[
  {
     id:4,
     title:"Implement  responsive UI  ",
@@ -92,4 +92,3 @@
     },
    
 ]
-export default sources;
