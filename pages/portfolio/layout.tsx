@@ -6,7 +6,7 @@ import
      Box
  } from '@mui/material'
  import Container from './container'
- import sources from '../sources'
+ import {sources} from '../sources'
  interface idata{id:number,title:string,projectAbout:string
    ,images:string[],video:string}
 export default function Layout (){
