@@ -11,7 +11,7 @@ import Link from 'next/link'
 import styles from '../../styles/details.module.css'
 import React, { useEffect,useState } from 'react'
 import {useRouter } from 'next/router'
-import sources from '../sources'
+import {sources} from '../sources'
 import {ArrowRight,ArrowLeft,GitHub} from '@material-ui/icons'
 import MyDialog from './dialog'
 
