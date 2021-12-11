@@ -36,7 +36,7 @@ useEffect(()=>{
      setNoArrow(false)
  }
 
-},[aim])
+},[aim,router.asPath])
 const handelImage=(e:React.MouseEvent)=>{
        let image = e.currentTarget as HTMLImageElement
     setSrc(image.src)
@@ -101,6 +101,7 @@ if (!aim) return (<h1>please wait</h1>)
                { aim.images.map((ele:string,index:number)=>{
                    if (index <minMax.max && index>=minMax.min){
                    return(<img src={ele} key={index}
+                                alt="image"
                           className={styles.normImage}
                            style={aim.video === "undefined"?
                             {width:"30%"}:null}
@@ -145,17 +146,18 @@ if (!aim) return (<h1>please wait</h1>)
                   
               }}>
                   <Typography sx={{
-                      fontSize:"2rem",
+                      fontSize:2,
                       color:"whitesmoke",
                       display:'flex',
                       flexDirection:"column",
-                      alignItem:"center"
+                      alignItems:"normal"
                   }}>
                       check project's code in Github  :
                       <Link href={aim.gitHub}>
                          <a className={styles.link}>
                            <Image src="/static/github.png"
                                   width={50}
+                                  alt="image"
                                   height={50}/>
                         </a> 
                       </Link>
@@ -164,9 +166,9 @@ if (!aim) return (<h1>please wait</h1>)
             </Grid>
             <MyDialog open={open}  
                          setOpen={setOpen}
-                          src={src}>
+                          src={src}/>
                                 
-                    </MyDialog>
+                  
         </div>
     )
 }

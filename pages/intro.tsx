@@ -117,7 +117,7 @@ const Intro =()=>{
             paraVariants=null
             
           }
-    },[])
+    },[animate.index,setAnimate])
   
   
      return (

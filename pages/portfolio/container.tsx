@@ -66,7 +66,7 @@ const Container =({image1,image2,image3,id,projectAbout,title})=>{
       if (animating){
           setAnimating(false)
       }
-    },[])
+    },[animating])
     return (
         <div className={styles.container}
             >

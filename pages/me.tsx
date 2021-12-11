@@ -115,13 +115,12 @@ const Me =(props:{animate:boolean})=>{
 
   const {animate,setAnimate}=useContext(animateContext)
   useEffect (()=>{
-console.log(animate)
-console.log(props)
+
   if (animate.index !== 0) {
     imagesVariants=null
     spanVariants=null
   }
-  },[])
+  },[animate.index])
 
    return (
        <div className={styles.containerMe}>
