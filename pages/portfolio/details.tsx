@@ -145,7 +145,7 @@ if (!aim) return (<h1>please wait</h1>)
                   
               }}>
                   <Typography sx={{
-                      fontSize:"2rem",
+                      fontSize:2,
                       color:"whitesmoke",
                       display:'flex',
                       flexDirection:"column",
