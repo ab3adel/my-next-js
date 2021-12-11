@@ -149,7 +149,7 @@ if (!aim) return (<h1>please wait</h1>)
                       color:"whitesmoke",
                       display:'flex',
                       flexDirection:"column",
-                      alignItem:"center"
+                      alignItems:"center"
                   }}>
                       check project's code in Github  :
                       <Link href={aim.gitHub}>
