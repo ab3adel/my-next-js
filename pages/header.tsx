@@ -10,7 +10,7 @@ from
 '@material-ui/icons'
 import Link from 'next/link'
 import Image from 'next/image'
-export const Header =()=>{
+const Header =()=>{
     return (
 
           <Toolbar sx={
@@ -50,3 +50,4 @@ export const Header =()=>{
           </Toolbar>
     )
 }
+export default Header;
