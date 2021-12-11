@@ -1,0 +1,56 @@
+
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  text-align: center;
+  height: 100vh;
+  width: 100vw
+}
+.image {
+  width:3rem;
+  height: 4rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  
+  bottom: 62%;
+  margin-right: auto;
+  margin-left: auto;
+ 
+}
+.box {
+    background-image: url("../public/static/box.png");
+   width: 9rem;
+   height: 11rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+  position: absolute;
+  right:0;
+  left: 0;
+  bottom: 55%;
+  margin-left: auto;
+  margin-right: auto;
+ 
+  
+}
+.description {
+  margin: 0;
+  font-size: small;
+  font-weight: normal;
+  bottom: 35%;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  box-shadow: 5px 4px 5px transparent;
+}
+
+.title{
+  font-size: larger;
+  font-weight: bold;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

@@ -1,0 +1,49 @@
+.spotLight {
+    grid-column:1/4 ;
+    grid-row: 1/1;
+    border:white 1mm;
+    border-radius: 1ch;
+    height: 80%;
+    background-repeat: no-repeat;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+  
+}
+.subContainer {
+display: flex;
+flex-direction: column-reverse;
+align-items: flex-end;
+margin-top: 1rem;
+
+}
+  .myNameParent  {
+   display: flex;
+   color:whitesmoke;
+   font-size: medium;
+   font-family: 'Roboto Mono', monospace
+}
+.myNameParent span {
+ 
+    font-size: larger;
+    font-weight: bold;
+    z-index: 2;
+    transform: translateX(0vw);
+    opacity: 1;
+    
+}
+
+.paper {
+    box-shadow: 4px 4px 4px grey;
+    padding:5px;
+    position: absolute;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: whitesmoke;
+    width: fit-content;
+    height: fit-content;
+    bottom:-100%;
+    margin-top: 1rem;
+
+}

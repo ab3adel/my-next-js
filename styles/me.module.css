@@ -1,0 +1,59 @@
+.containerMe {
+    display: flex;
+    position: relative;
+}
+
+
+
+.animatedImage{
+    width:13rem;
+    height: 14rem;
+    border-radius: 90px;
+    background-image: url("../public/static/me1.png");
+     
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+}
+
+.divaiy{
+position: absolute;
+z-index: 1;
+background-image: url("../public/static/net.svg");
+width: 0rem;
+height: 0px;
+top: 1rem;
+border-radius: 19cm;
+
+
+}
+.imagesParent {
+    position: relative;
+    z-index: 2;
+    width: 13rem;
+    height: 14rem;
+}
+.roundedImage{
+    width:30%;
+    height: 30%;
+    border-radius: 90px;
+    box-shadow: 4px 5px 6px grey;
+    position: absolute;
+    opacity:0
+}
+#pythonImage {
+    left:-50%;
+    top:0px;
+}
+#csImage{
+    left:50%;
+    top:0px
+}
+#jsImage{
+    left:0px;
+    top:50%;
+}
