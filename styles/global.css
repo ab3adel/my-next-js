@@ -26,11 +26,13 @@ grid-template-columns: repeat(3,1fr);
 grid-template-rows:50px 1fr   ;
 min-width: 100vw;
 min-height: 100vh;
-overflow: hidden;
+overflow-x: hidden;
+overflow-y: auto;
 
 }
 a {
   color: white;
+  font-size: medium;
   text-decoration: none;
   background-color: transparent;
   box-shadow: 4px 5px 5px rgb(212, 206, 206,0.4);

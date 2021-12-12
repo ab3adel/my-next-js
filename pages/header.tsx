@@ -35,13 +35,13 @@ const Header =()=>{
                            <LinkedIn/>
                         </Icon>
                   </a>
-                  <a href="#">
+                  <a href="https://github.com/ab3adel">
                         GitHub
                         <Icon >
                            <GitHub/>
                         </Icon>
                   </a>
-                  <a href="#">
+                  <a href="https://t.me/Mohammadismaeeltelegram">
                         Telegram
                         <Icon >
                            <Telegram/>

@@ -7,8 +7,8 @@
     
 }
 .normImage{
-    width:20%;
-    height:9rem;
+
+    margin:5px;
 }
 .bigImage{
     max-width: 100%;
@@ -29,10 +29,11 @@
     width:50vw;
     height: 40vh;
 }
-@media only  screen and (width<400px)  {
+@media only  screen and (width<450px)  {
     .normImage{
-        height: 6rem;
-        width:22%
+        height: 22%;
+        width:40%;
+        margin:5px
         
     }
     .bigImage{

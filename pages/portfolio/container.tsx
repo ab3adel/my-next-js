@@ -4,6 +4,8 @@ import {useRouter} from 'next/router'
 import { useEffect ,useState,useContext} from 'react';
 import {animateContext} from '../_app'
 import { Typography } from '@mui/material';
+import PreImage from '../../public/static/ui/ui.png'
+import Image from 'next/image'
 let imagesVariant:Variants ={
     hiddenCenter:{
         x:"0rem"
@@ -70,26 +72,35 @@ const Container =({image1,image2,image3,id,projectAbout,title})=>{
     return (
         <div className={styles.container}
             >
-                <motion.img 
+                <motion.div 
                 variants={imagesVariant}
                 initial="hiddenLeft" 
                 whileInView="left"
                 viewport={{once:true}}
                 className={styles.image}
-                src={image1} />
-                <motion.img 
+                 >
+                  <Image width={"100%"} height={"100%"}
+                     src={PreImage}/>
+                </motion.div>
+                <motion.div 
                 variants={imagesVariant}
                 whileInView="right"
                 viewport={{once:true}}
                 initial="hiddenRight" 
                 className={styles.image}
-                src={image2} />
-                <motion.img 
+              >
+                     <Image width={"100%"} height={"100%"}
+                         src={PreImage}/>
+                </motion.div>
+                <motion.div 
                 variants={imagesVariant}
                 viewport={{once:true}}
                 initial="hiddenCenter" whileInView="center"
                 className={styles.image}
-                src={image3} />
+                >
+                     <Image width={"100%"} height={"100%"}
+                        src={PreImage}/>
+                </motion.div>
             <motion.div onClick={()=>router.push('/portfolio/details',{query:{id}})}
             className={styles.box}>
 
@@ -105,7 +116,7 @@ const Container =({image1,image2,image3,id,projectAbout,title})=>{
                     sx={{
                         fontSize:"large",
                         marginTop:"1rem",
-                        wordSpacing:"0.3rem"
+                      
                     }}
                      variant="body1">
                        {projectAbout}<br/>

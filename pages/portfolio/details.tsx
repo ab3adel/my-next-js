@@ -81,6 +81,7 @@ if (!aim) return (<h1>please wait</h1>)
                   margin:"1rem",
                   justifyContent:'center',
                   flexWrap:"wrap",
+            
               
                 
               }:{
@@ -92,21 +93,24 @@ if (!aim) return (<h1>please wait</h1>)
                 flexWrap:"wrap",
                 width:"96%",
                 overflow:"hidden",
-                height:"100vh",
-                padding:"1rem"
-                
+                padding:"1rem",
+                minHeight:"100vh"
                
               }
             }>
                { aim.images.map((ele:string,index:number)=>{
                    if (index <minMax.max && index>=minMax.min){
-                   return(<img src={ele} key={index}
+                   return(
+                      <div  className={styles.normImage}>
+                       <Image src={ele} key={index}
                                 alt="image"
-                          className={styles.normImage}
-                           style={aim.video === "undefined"?
-                            {width:"30%"}:null}
+                               
+                           width={aim.video === "undefined" ? "200%": "190%"}
+                           height={aim.video=== "undefined" ? "200%" :"190%"}
                          onClick={(e)=>  handelImage(e)} 
-                        />)
+                        />
+                        </div>
+                      )
                    }
                })}
                <div style={{fontSize:"medium",overflow:'hidden'}}>
@@ -146,13 +150,13 @@ if (!aim) return (<h1>please wait</h1>)
                   
               }}>
                   <Typography sx={{
-                      fontSize:2,
+                     
                       color:"whitesmoke",
                       display:'flex',
                       flexDirection:"column",
                       alignItems:"center"
                   }}>
-                      check project's code in Github  :
+                      <div style={{fontSize:"1rem"}}>check project's code in Github  :</div>
                       <Link href={aim.gitHub}>
                          <a className={styles.link}>
                            <Image src="/static/github.png"
