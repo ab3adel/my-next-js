@@ -153,8 +153,8 @@ const Intro =()=>{
                             variants={paraVariants} initial="hidden" animate="visible"
                             >
                                 Engineer and <code>web developer</code> <Computer fontSize="small" /> <br/> 
-                                enthausiated to learn up-to-date techniques <Update fontSize="small"/> <br/>
-                                thrilled to dive into new challengs <Star fontSize="small" /> <br/>
+                                Impassioned to learn up-to-date techniques <Update fontSize="small"/> <br/>
+                                Thrilled to dive into new challengs <Star fontSize="small" /> <br/>
                                 
                                 
                         </motion.div>
