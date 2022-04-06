@@ -2,7 +2,7 @@ import style from '../styles/index.module.css'
 import Intro from './intro'
 import {Looks} from '@material-ui/icons'
 import Link from 'next/link'
-import {Caution} from './caution'
+import Caution from './caution'
 import { useState } from 'react'
  const  HomePage =()=> {
  const [open,setOpen]=useState(true)
