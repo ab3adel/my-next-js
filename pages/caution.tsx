@@ -11,7 +11,7 @@ import {useContext} from 'react'
 import {animateContext} from './_app'
 interface iProps {open,setOpen}
 
-export const Caution =({open,setOpen}:iProps) =>{
+ const Caution =({open,setOpen}:iProps) =>{
     const {setAnimate} =useContext(animateContext)
   const   handleAnimation =()=>{
       setAnimate((pre:any)=>({...pre,start:true}))
@@ -47,3 +47,4 @@ export const Caution =({open,setOpen}:iProps) =>{
         </Dialog>
     )
 }
+export default Caution;
