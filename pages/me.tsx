@@ -130,7 +130,7 @@ if (animate?.start ){
       spanVariants=null
       imagesVariants=null
   }
-  },[animate.index])
+  },[animate])
 
    return (
        <div className={styles.containerMe}>
