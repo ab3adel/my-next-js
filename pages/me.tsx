@@ -118,14 +118,14 @@ const Me =(props:{animate:{start:boolean,index:number}})=>{
   const radiusControl =useAnimation ()
   const parentControl=useAnimation()
   useEffect (()=>{
-if (animate.start ){
+if (animate?.start ){
   pythonControl.start('pythonAnimate')
   jsControl.start('jsAnimate')
   csControl.start('csAnimate')
   radiusControl.start('radius')
   parentControl.start('parentAnimate')
 }
-  if (animate.index !==0 ) {
+  if (animate?.index !==0 ) {
 
       spanVariants=null
       imagesVariants=null

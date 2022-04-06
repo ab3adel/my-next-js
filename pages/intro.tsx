@@ -100,7 +100,6 @@ let paraVariants:Variants={
 
 const Intro =()=>{
   const {animate,setAnimate} =useContext(animateContext)
-  const [animating,setAnimating]= useState(false)
   const controlChildrenRight =useAnimation()
   const controlChildrenLeft =useAnimation()
   const controlChildrenSteep =useAnimation()
