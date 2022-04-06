@@ -16,7 +16,7 @@ let spanVariants:Variants={
        boxShadow:"0px 0px 0px transparent"
     },
     radius:{
-       height:"0rem",
+       height:["12rem","0rem"],
        boxShadow:["0px 0px 0px transparent","10px  4rem 4rem white","10px  10rem 4rem white","10px  10rem 10rem white"],
        transition:{
            duration:5,
@@ -37,8 +37,8 @@ let imagesVariants:Variants={
     opacity:0.9
   },
   parentAnimate:{
-    opacity:1,
-    rotateZ:360,
+    opacity:[0.9,1],
+    rotateZ:[0,360],
     width:0,
     height:0,
     transition:{
@@ -64,8 +64,8 @@ pythonInitial:{
 
 },
 pythonAnimate:{
-     x:0,
-     opacity:1,
+     x:["-100vw",'0vw'],
+     opacity:[0,1],
      transition:{
        duration:3,
        delay:4,
@@ -81,8 +81,8 @@ jsInitial:{
     
     },
 jsAnimate:{
-         x:0,
-         opacity:1,
+         x:["100vw",'0vw'],
+         opacity:[0,1],
          transition:{
            duration:4,
            delay:4,
@@ -98,8 +98,8 @@ csInitial:{
         
         },
 csAnimate:{
-             y:0,
-             opacity:1,
+             y:["-100vh",'0vh'],
+             opacity:[0,1],
              transition:{
                duration:3,
                delay:4,
@@ -110,15 +110,25 @@ csAnimate:{
              }
             }
 }
-const Me =(props:{animate:boolean})=>{
-
-
-  const {animate,setAnimate}=useContext(animateContext)
+const Me =(props:{animate:{start:boolean,index:number}})=>{
+  let {animate}=props
+  const pythonControl =useAnimation ()
+  const jsControl =useAnimation ()
+  const csControl =useAnimation ()
+  const radiusControl =useAnimation ()
+  const parentControl=useAnimation()
   useEffect (()=>{
+if (animate.start ){
+  pythonControl.start('pythonAnimate')
+  jsControl.start('jsAnimate')
+  csControl.start('csAnimate')
+  radiusControl.start('radius')
+  parentControl.start('parentAnimate')
+}
+  if (animate.index !==0 ) {
 
-  if (animate.index !== 0) {
-    imagesVariants=null
-    spanVariants=null
+      spanVariants=null
+      imagesVariants=null
   }
   },[animate.index])
 
@@ -129,39 +139,39 @@ const Me =(props:{animate:boolean})=>{
               className={styles.animatedImage}
               >  <motion.div 
                   variants={imagesVariants} initial="parentInitial"
-                  animate="parentAnimate"
+                  animate={parentControl}
                   className={styles.imagesParent}>
                       <motion.img src="/static/python.png" variants={imagesVariants}
                         className={styles.roundedImage}
-                        initial="pythonInitial" animate="pythonAnimate"
+                        initial="pythonInitial" animate={pythonControl}
                         id={styles.pythonImage}/>
                       <motion.img src="/static/js.png" 
                        variants={imagesVariants}
-                       initial="jsInitial" animate="jsAnimate"
+                       initial="jsInitial" animate={jsControl}
                       className={styles.roundedImage}
                       id={styles.jsImage}/>
                       <motion.img src="/static/cs.png" 
                          variants={imagesVariants}
-                         initial="csInitial" animate="csAnimate"
+                         initial="csInitial" animate={csControl}
                          className={styles.roundedImage}
                          id={styles.csImage}/>
                   </motion.div>  
               </motion.div>
              
               <motion.span 
-                variants={spanVariants} animate="radius"
+                variants={spanVariants} animate={radiusControl}
                 initial={animate ?"first" :"beforeFirst"} style={{top:"3rem",width:"10rem"}}
               className={styles.divaiy}>
 
               </motion.span>
               <motion.span 
-                variants={spanVariants} animate="radius"
+                variants={spanVariants} animate={radiusControl}
                 initial={animate ?"first" :"beforeFirst"} style={{top:"5rem",width:"10rem"}}
               className={styles.divaiy}>
 
               </motion.span>
               <motion.span 
-                variants={spanVariants} animate="radius"
+                variants={spanVariants} animate={radiusControl}
                 initial={animate ?"first" :"beforeFirst"} style={{top:"7rem",width:"10rem"}}
               className={styles.divaiy}>
 

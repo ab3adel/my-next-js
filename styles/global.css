@@ -8,6 +8,8 @@ body {
   line-height: 1.6;
   font-size: 18px;
   animation: light 2.5s linear 12s 1 forwards ;
+  width: 100vw;
+  overflow-x: hidden;
 }
 
 * {

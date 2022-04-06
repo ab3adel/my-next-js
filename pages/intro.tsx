@@ -24,10 +24,8 @@ let childrenVariants:Variants = {
   },
   right:{
     
-    x:0,
-    opacity:1,
-   
-    translateY:50,
+    x:['-100vw','0vw'],
+    opacity:[0,1],
    transition:{
      duration:3,
      translateY:{
@@ -44,10 +42,9 @@ let childrenVariants:Variants = {
   },
   left:{
     
-    x:0,
-    opacity:1,
-   
-    translateY:50,
+    x:['100vw','0vw'],
+    opacity:[0,1],
+
    transition:{
      duration:3,
      translateY:{
@@ -64,11 +61,10 @@ let childrenVariants:Variants = {
     opacity:0
   },
   steep:{
-    y:0,
-    x:0,
-    opacity:1,
-   
-    translateY:50,
+    y:['50vh','0vh'],
+    x:['-100vw','0vw'],
+    opacity:[0,1],
+
    transition:{
      duration:3,
      translateY:{
@@ -87,7 +83,7 @@ let paraVariants:Variants={
 
   },
   visible: {
-    opacity:1,
+    opacity:[0,1],
  
     transition:{
       duration:4,
@@ -103,26 +99,31 @@ let paraVariants:Variants={
 }
 
 const Intro =()=>{
-  const [animating,setAnimating]= useState(true)
   const {animate,setAnimate} =useContext(animateContext)
+  const [animating,setAnimating]= useState(false)
+  const controlChildrenRight =useAnimation()
+  const controlChildrenLeft =useAnimation()
+  const controlChildrenSteep =useAnimation()
+  const controlPara =useAnimation()
+
 
     useEffect(()=>{
 
-          if (animate.index === 0){
+          if (animate.start ){
+          
+            controlChildrenRight.start('right')
+            controlChildrenLeft.start('left')
+            controlChildrenSteep.start('steep')
+            controlPara.start('visible')
             setAnimate(pre=>({...pre,index:pre.index+1}))
-           
           }
-          else {
-            childrenVariants=null
-            paraVariants=null
-            
-          }
-    },[animate.index,setAnimate])
+        
+    },[animate.start])
   
   
      return (
                 <Box component="div" className={style.spotLight}>
-                         <Me animate={animating}/>
+                         <Me animate={animate} />
 
                         <div 
                         className={style.subContainer}>
@@ -130,27 +131,27 @@ const Intro =()=>{
                                 <motion.div  className={style.myNameParent}
                                 
                                 >
-                                    <motion.span variants={childrenVariants} initial="hiddenRight"  animate ={"right"} >M</motion.span> 
-                                    <motion.span variants={childrenVariants} initial="hiddenRight"  animate ={"right"}   >O</motion.span>
-                                    <motion.span variants={childrenVariants} initial="hiddenRight"  animate ={"right"}  >H</motion.span> 
-                                    <motion.span variants={childrenVariants} initial="hiddenRight"  animate ={"right"}  >A</motion.span>
-                                    <motion.span variants={childrenVariants} initial="hiddenLeft"  animate ={"left"}  >M</motion.span>
-                                    <motion.span variants={childrenVariants} initial="hiddenLeft"  animate ={"left"} >M</motion.span>
-                                    <motion.span variants={childrenVariants} initial="hiddenLeft"  animate ={"left"}   >A</motion.span> 
-                                    <motion.span variants={childrenVariants} initial="hiddenLeft"  animate ={"left"}  >D</motion.span>
+                                    <motion.span variants={childrenVariants} initial="hiddenRight"  animate ={controlChildrenRight} >M</motion.span> 
+                                    <motion.span variants={childrenVariants} initial="hiddenRight"  animate ={controlChildrenRight}   >O</motion.span>
+                                    <motion.span variants={childrenVariants} initial="hiddenRight"  animate ={controlChildrenRight}  >H</motion.span> 
+                                    <motion.span variants={childrenVariants} initial="hiddenRight"  animate ={controlChildrenRight}  >A</motion.span>
+                                    <motion.span variants={childrenVariants} initial="hiddenLeft"  animate ={controlChildrenLeft}  >M</motion.span>
+                                    <motion.span variants={childrenVariants} initial="hiddenLeft"  animate ={controlChildrenLeft} >M</motion.span>
+                                    <motion.span variants={childrenVariants} initial="hiddenLeft"  animate ={controlChildrenLeft}   >A</motion.span> 
+                                    <motion.span variants={childrenVariants} initial="hiddenLeft"  animate ={controlChildrenLeft}  >D</motion.span>
                                     <span style={{width:"10px"}} />
-                                    <motion.span variants={childrenVariants} initial="hiddenSteep"  animate ={"steep"}  >I</motion.span>
-                                    <motion.span variants={childrenVariants} initial="hiddenSteep"  animate ={"steep"} >S</motion.span>
-                                    <motion.span variants={childrenVariants} initial="hiddenSteep"  animate ={"steep"}  >M</motion.span> 
-                                    <motion.span variants={childrenVariants} initial="hiddenSteep"  animate ={"steep"} >A</motion.span>
-                                    <motion.span variants={childrenVariants} initial="hiddenSteep"  animate ={"steep"} >E</motion.span> 
-                                    <motion.span variants={childrenVariants} initial="hiddenSteep"  animate ={"steep"} >E</motion.span> 
-                                    <motion.span variants={childrenVariants} initial="hiddenSteep"  animate ={"steep"} >L</motion.span>
+                                    <motion.span variants={childrenVariants} initial="hiddenSteep"  animate ={controlChildrenSteep}  >I</motion.span>
+                                    <motion.span variants={childrenVariants} initial="hiddenSteep"  animate ={controlChildrenSteep} >S</motion.span>
+                                    <motion.span variants={childrenVariants} initial="hiddenSteep"  animate ={controlChildrenSteep}  >M</motion.span> 
+                                    <motion.span variants={childrenVariants} initial="hiddenSteep"  animate ={controlChildrenSteep} >A</motion.span>
+                                    <motion.span variants={childrenVariants} initial="hiddenSteep"  animate ={controlChildrenSteep} >E</motion.span> 
+                                    <motion.span variants={childrenVariants} initial="hiddenSteep"  animate ={controlChildrenSteep} >E</motion.span> 
+                                    <motion.span variants={childrenVariants} initial="hiddenSteep"  animate ={controlChildrenSteep} >L</motion.span>
                                 </motion.div>
                                 
                         </div>
                         <motion.div className={style.paper}
-                            variants={paraVariants} initial="hidden" animate="visible"
+                            variants={paraVariants} initial="hidden" animate={controlPara}
                             >
                                 Engineer and <code>web developer</code> <Computer fontSize="small" /> <br/> 
                                 Impassioned to learn up-to-date techniques <Update fontSize="small"/> <br/>

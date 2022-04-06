@@ -22,7 +22,7 @@ const Header =()=>{
         } >
                   <Link href="/">
                      <a style={{boxShadow:"0px 0px 0px transparent"}}>
-                        <Image src="/static/B3d.png"
+                        <Image src="/static/logo.png"
                            className="logo"
                            alt="B3D"
                            width={30} height={30}/> 

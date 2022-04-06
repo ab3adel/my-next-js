@@ -12,7 +12,7 @@ import Header from './header'
 export const animateContext= createContext(null)
  const  App =  ({Component,pageProps}:AppProps) =>{
  
-const [animate,setAnimate]=useState({index:0,container:0})
+const [animate,setAnimate]=useState({index:0,container:0,start:false})
   return (
     <div id="root" >
      <Box  sx={{
