@@ -50,6 +50,7 @@ interface iProps {
                                             </Grid>
                                             <Grid item xs={12} className={styles.body}>
                                               {
+                                                techs && techs.length> 0?
                                                 techs.map((ele:iTech,index:number)=>{
                                                     return (
                                                         <Typography
@@ -62,7 +63,8 @@ interface iProps {
                                                             <span>{ele.name}</span>
                                                         </Typography>
                                                     )
-                                                })
+                                                }) : 
+                                                null
                                               }
                                       
                                             </Grid>
