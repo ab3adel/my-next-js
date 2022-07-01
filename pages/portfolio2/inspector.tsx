@@ -52,7 +52,7 @@ interface Iprops {open:boolean
                 }}>
             <DialogContent className={styles.imageContainer}>
                 <div className={styles.image}
-                    style={{backgroundImage:`url(${imgs[selectedImage]})`}}>
+                    style={{backgroundImage:`url(${imgs && imgs.length>0 ?imgs[selectedImage]:null})`}}>
                         <Close className={styles.closeButton}
                           onClick={()=>setOpen(false)} />
                         <ArrowLeft className={styles.leftButton}
