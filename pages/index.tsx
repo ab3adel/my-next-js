@@ -16,7 +16,7 @@ import
 } 
 from '@material-ui/icons'
 import {motion,useAnimation} from 'framer-motion'
-import {AboutMe} from './aboutMe/aboutMe'
+import AboutMe from './aboutMe/aboutMe'
  const  HomePage =()=> {
  const [open,setOpen]=useState(true)
  const [value,setValue]=useState(0)  

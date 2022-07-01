@@ -60,7 +60,7 @@ let positions = [
     {position:'70%'},
     {position:'90%'},
 ]
-export const AboutMe =() =>{
+ const AboutMe =() =>{
 
 
     return (
@@ -193,3 +193,4 @@ export const AboutMe =() =>{
         </div>
     )
 }
+export default AboutMe;
