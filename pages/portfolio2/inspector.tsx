@@ -82,6 +82,7 @@ interface Iprops {open:boolean
             }}>
                 <div className={styles.subImages}>
                     {
+                        imgs && imgs.length> 0 ?
                         imgs.map((ele,index)=>
                            <div className={selectedImage === index? styles.selected : styles.hide}
                            key={index}>
@@ -97,6 +98,7 @@ interface Iprops {open:boolean
                             />
                             </div>
                         )
+                        : null
                     }
                 </div>
 

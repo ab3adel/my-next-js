@@ -211,6 +211,7 @@ for (let i =0;i<11;i++) {
             
            </motion.div>
            {
+
             arr.map((ele,index)=>{
                 return (
                     <motion.div
@@ -226,7 +227,7 @@ for (let i =0;i<11;i++) {
             })
            }
            <motion.div className={styles.projectImg} 
-              style={{...position[0],backgroundImage:`url(${images[0]})`}}
+              style={{...position[0],backgroundImage:`url(${images && images[0] ?images[0]:null})`}}
               variants={treeVariants}
               whileHover={'shakeFruit'}
               animate={controlFruits}
@@ -235,7 +236,7 @@ for (let i =0;i<11;i++) {
             
            </motion.div>
            <motion.div className={styles.projectImg}
-           style={{...position[1],backgroundImage:`url(${images[1]})`}}
+           style={{...position[1],backgroundImage:`url(${images && images[1] ?images[1]:null})`}}
            variants={treeVariants}
             whileHover={'shakeFruit'}
             animate={controlFruits}
@@ -244,7 +245,7 @@ for (let i =0;i<11;i++) {
 
            </motion.div>
            <motion.div className={styles.projectImg}
-           style={{...position[2],backgroundImage:`url(${images[2]})`}}
+           style={{...position[2],backgroundImage:`url(${images && images[2] ?images[2]:null})`}}
               variants={treeVariants}
               whileHover={'shakeFruit'} 
               animate={controlFruits}
@@ -253,7 +254,7 @@ for (let i =0;i<11;i++) {
 
            </motion.div>
            <motion.div className={styles.projectImg} 
-           style={{...position[3],backgroundImage:`url(${images[3]})`}}
+           style={{...position[3],backgroundImage:`url(${images && images[3] ?images[3]:null})`}}
            variants={treeVariants}
               whileHover={'shakeFruit'}
               animate={controlFruits}
@@ -262,7 +263,7 @@ for (let i =0;i<11;i++) {
 
            </motion.div>
            <motion.div className={styles.projectImg} 
-           style={{...position[4],backgroundImage:`url(${images[4]})`}}
+           style={{...position[4],backgroundImage:`url(${images && images[4] ?images[4]:null})`}}
            variants={treeVariants}
               whileHover={'shakeFruit'}
               animate={controlFruits}
@@ -271,7 +272,7 @@ for (let i =0;i<11;i++) {
 
            </motion.div>
            <motion.div className={styles.projectImg} 
-           style={{...position[5],backgroundImage:`url(${images[5]})`}}
+           style={{...position[5],backgroundImage:`url(${images && images[5] ?images[5]:null})`}}
            variants={treeVariants}
               whileHover={'shakeFruit'}
               animate={controlFruits}
