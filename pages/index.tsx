@@ -1,5 +1,5 @@
 import style from '../styles/index.module.css'
-import Intro from './intro'
+
 import 
 {
   Grid,
