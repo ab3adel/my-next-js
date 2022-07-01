@@ -113,7 +113,7 @@ for (let i =0;i<11;i++) {
         
 }
 
- const Tree = (props:iProps) =>{
+ export const Tree = (props:iProps) =>{
     let {setInspectorOptions,id,images,inView,video}= props
     const [position,setPosition]=useState([
         { top:'',left:''}
@@ -288,4 +288,3 @@ for (let i =0;i<11;i++) {
         </motion.div>
     )
 }
-export default Tree;

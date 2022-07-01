@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material"
-import Tree from './tree'
-import Root from './root'
+import {Tree} from './tree'
+import{ Root} from './root'
 import styles from '../../styles/portfolio.module.scss'
 import React, { useState } from "react"
 import {useInView} from 'react-intersection-observer'
@@ -16,7 +16,7 @@ interface iProps {images:string []
         }
 
 
- const Project =(props:iProps) =>{
+ export const Project =(props:iProps) =>{
     const {inView,ref} =useInView({threshold:1.0})
     
    
@@ -51,4 +51,3 @@ interface iProps {images:string []
    
     )
 }
-export default Project;
