@@ -19,7 +19,7 @@ interface Iprops {open:boolean
     ,setOpen:Function,selectedImage:number
     ,imgs:string[],selectImage:Function}
 
- export const Inspector =(props:Iprops)=>{
+ const Inspector =(props:Iprops)=>{
     let {open,setOpen
           ,imgs,selectedImage,
         selectImage}=props
@@ -105,3 +105,4 @@ interface Iprops {open:boolean
     )
 
 }
+export default Inspector;

@@ -10,7 +10,7 @@ interface iProps {
     ,gitHub:string,video:string,
     Role:string
 }
-export const Info =({about,techs,gitHub,Role}:iProps) =>{
+ const Info =({about,techs,gitHub,Role}:iProps) =>{
     const [value, setValue] = useState(0);
 
     return (
@@ -113,3 +113,4 @@ export const Info =({about,techs,gitHub,Role}:iProps) =>{
                   </Grid>
     )
 }
+export default Info;
