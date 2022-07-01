@@ -8,7 +8,7 @@ import
 from '@mui/material'
 import { useState } from 'react'
 import Container from './portfolio2/container'
-import {TabPanel} from './tools/tabs/tabPanel'
+import TabPanel from './tools/tabs/tabPanel'
 import 
 {
   ShowChart,

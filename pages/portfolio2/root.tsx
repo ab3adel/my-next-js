@@ -2,7 +2,7 @@ import {motion,Variants,useAnimation, MotionConfig} from 'framer-motion'
 import {Grid} from '@mui/material'
 import styles from '../../styles/portfolio.module.scss'
 import { useEffect, useState } from 'react'
-import {Info} from './info'
+import Info from './info'
 interface iTech {name:string,imgSrc:string}
 interface iProps {techs:iTech [],about:string
                  ,gitHub:string,inView:boolean,video:string
@@ -48,7 +48,7 @@ const rootGrow:Variants= {
     }
 }
 
-export const Root =({techs,about,gitHub,inView,video,Role}:iProps) =>{
+ const Root =({techs,about,gitHub,inView,video,Role}:iProps) =>{
     const [hoveredName,setHoveredName]=useState('')
     const controlRoot=useAnimation()
 
@@ -89,3 +89,4 @@ export const Root =({techs,about,gitHub,inView,video,Role}:iProps) =>{
         </motion.div>
     )
 }
+export default Root ;

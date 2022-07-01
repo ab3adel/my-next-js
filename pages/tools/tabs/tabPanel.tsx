@@ -3,7 +3,7 @@ import {Grid} from '@mui/material'
 import styles from './tabpanel.module.scss'
 
 interface iProps {value:number,index:number,children:ReactElement}
-export const TabPanel =({value,index,children}:iProps)=>{
+ const TabPanel =({value,index,children}:iProps)=>{
 
 
 
@@ -21,3 +21,4 @@ export const TabPanel =({value,index,children}:iProps)=>{
         </Grid>
     )
 }
+export default TabPanel;

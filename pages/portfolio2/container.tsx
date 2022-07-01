@@ -1,9 +1,9 @@
 import {Grid} from '@mui/material'
 import styles from '../../styles/portfolio.module.scss'
-import {Project} from './project'
+import Project from './project'
 import {sources} from '../../public/sources'
 import { useEffect, useState } from 'react'
-import {Inspector} from './inspector'
+import Inspector from './inspector'
 let arr=new Array(8).fill(null)
 
  const Container =() =>{
