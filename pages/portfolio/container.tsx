@@ -6,6 +6,7 @@ import {animateContext} from '../_app'
 import { Typography } from '@mui/material';
 import PreImage from '../../public/static/ui/ui.png'
 import Image from 'next/image'
+
 let imagesVariant:Variants ={
     hiddenCenter:{
         x:"0rem"

@@ -161,7 +161,7 @@ if (animate?.start ){
               <motion.span 
                 variants={spanVariants} animate={radiusControl}
                 initial={animate ?"first" :"beforeFirst"} style={{top:"3rem",width:"10rem"}}
-              className={styles.divaiy}>
+                className={styles.divaiy}>
 
               </motion.span>
               <motion.span 
@@ -173,7 +173,7 @@ if (animate?.start ){
               <motion.span 
                 variants={spanVariants} animate={radiusControl}
                 initial={animate ?"first" :"beforeFirst"} style={{top:"7rem",width:"10rem"}}
-              className={styles.divaiy}>
+                className={styles.divaiy}>
 
               </motion.span>
               

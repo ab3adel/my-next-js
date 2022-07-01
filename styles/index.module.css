@@ -4,12 +4,10 @@
     display: grid;
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: 1fr 1fr 10rem;
-    width: 100%;
-    height: 100%;
     max-width: 100vw;
-    min-width:100vw;
     background-image: url('../public/static/B3d.png');
     background-position: center top;
+    min-height: 100vh;
 
 }
 .portfolioBtnContainer {
@@ -37,4 +35,82 @@
     font-size: 3rem;
     font-weight: bold;
     transition-duration: 1.4s;
+}
+.tab {
+    background:transparent;
+   
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    padding:0.5em;
+    align-items: center;
+    cursor: pointer;
+}
+.selectedTab {
+
+    background: linear-gradient(270deg , rgb(63, 226, 63) ,rgb(129, 7, 7),
+    rgb(115, 243, 115) ,rgb(184, 168, 168),
+    rgb(202, 247, 202) ,rgb(160, 125, 125),
+    transparent,transparent )
+    ;
+    background-size:10% 10% ;
+    background-position: 0% 0%;
+    animation: animateBackground 4s cubic-bezier(0.075, 0.82, 0.165, 1) 1 forwards;
+    position: relative;
+}
+
+.selectedTab::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 100px;
+    left: 0;
+    top:0;
+    background:linear-gradient(45deg ,green,blue,red,purple,yellow,white,black) ;
+    background-size: 400% 400%;
+    background-position: 0% 0%;
+    filter:blur(5px);
+    border-radius:10px ;
+    animation:glowingBorder 3s cubic-bezier(0.165, 0.84, 0.44, 1) infinite ;
+}
+.selectedTab::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    filter:blur(5px);
+    right: 0;
+    bottom:0;
+    background:linear-gradient(0.1turn ,green,blue,red,purple,yellow,white,black) ;
+    background-size: 400% 400%;
+    background-position:0% 0%;
+    animation:glowingBorder 3s cubic-bezier(0.165, 0.84, 0.44, 1) infinite alternate ;
+    border-radius:10px ;
+}
+@keyframes animateBackground {
+    0% {background-size: 0% 0% ;}
+    50% {background-size: 50% 50%;}
+    80%{
+        background-size: 200% 200% ;
+        background-position: 100% 100%;
+    }
+    90%{  background-size: 0% 0% ;
+        background-position: 100% 100%;}
+    100%{
+        background:transparent;
+        color:rgb(214, 113, 113);
+        font-weight: bold;
+    }
+}
+@keyframes glowingBorder {
+    0% {
+        background-position: 0% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+    
 }
