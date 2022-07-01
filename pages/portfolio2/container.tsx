@@ -32,6 +32,7 @@ let arr=new Array(8).fill(null)
         padding={3}
         >
             {
+                sources && sources.length>0 ?
                 sources.map((ele,index)=>{
                     return (
                     <Project 
@@ -48,6 +49,7 @@ let arr=new Array(8).fill(null)
                     />
                     )
                 })
+                : null
             }
             <Inspector open={inspectorOptions.open}
                         setOpen={setOpen}
