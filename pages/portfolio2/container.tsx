@@ -64,6 +64,7 @@ let arr=new Array(8).fill(null)
                              ,'/static/moon.png'
                              ,'/static/me1.png'
                              ,'/static/media/net.svg'
+                             ,'/static/soil.png'
                              ]} 
                         len={5}/>
         </Grid>
