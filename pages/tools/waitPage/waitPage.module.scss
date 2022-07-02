@@ -1,0 +1,21 @@
+
+.waitPageContainer {
+    .waitPage {
+        .waitPageImage {
+            
+        }
+        .waitPageText {
+            font-size: 1.2em;
+            .moreTime {
+               
+            }
+            .patient{
+                font-weight:bold ;
+                color:blue;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }
+}

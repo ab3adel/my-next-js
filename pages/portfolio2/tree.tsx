@@ -1,7 +1,7 @@
 import { Brightness1 } from '@material-ui/icons'
 import {motion,Variants,useAnimation} from 'framer-motion'
 import React, { useEffect, useState } from 'react'
-import {YouTube} from '@material-ui/icons'
+import LoadingImage from '../tools/loadingImage/loadingImage'
 import styles from '../../styles/portfolio.module.scss'
 interface iProps {
             setInspectorOptions:Function,id:number,
@@ -115,6 +115,7 @@ for (let i =0;i<11;i++) {
 
   const Tree = (props:iProps) =>{
     let {setInspectorOptions,id,images,inView,video}= props
+    const [isLoaded,setLoaded]=useState(false)
     const [position,setPosition]=useState([
         { top:'',left:''}
     ]
@@ -141,11 +142,11 @@ for (let i =0;i<11;i++) {
       else {
     let newPositions= [
         {left:'36%',top:'50%'},
-        {left:'43%',top:'40%'},
-        {left:'60%',top:'48%'},
-        {left:'17%',top:'62%'},
+        {left:'41%',top:'40%'},
+        {left:'61%',top:'48%'},
+        {left:'15%',top:'62%'},
         {left:'54%',top:'62%'},
-        {left:'78%',top:'58%'}
+        {left:'80%',top:'58%'}
       
     ]
     setPosition(newPositions)
@@ -184,7 +185,7 @@ for (let i =0;i<11;i++) {
             shakeAll()
         }
     },[inView])
-  
+ 
     return (
         <motion.div className={styles.imgContainer}
           style={{
@@ -221,65 +222,44 @@ for (let i =0;i<11;i++) {
                     animate={controlStar}
                     custom={{i:index}}
                     style={{top:`${ele.top}%`,left:`${ele.left}%`}}
+                   
                     >
                     </motion.div>
                 )
             })
            }
-           <motion.div className={styles.projectImg} 
-              style={{...position[0],backgroundImage:`url(${images && images[0] ?images[0]:null})`}}
-              variants={treeVariants}
-              whileHover={'shakeFruit'}
-              animate={controlFruits}
-              onClick={()=>handleSelectedImage(0)}
-              >
-            
-           </motion.div>
-           <motion.div className={styles.projectImg}
-           style={{...position[1],backgroundImage:`url(${images && images[1] ?images[1]:null})`}}
-           variants={treeVariants}
-            whileHover={'shakeFruit'}
-            animate={controlFruits}
-            onClick={()=>handleSelectedImage(1)}
-            >
-
-           </motion.div>
-           <motion.div className={styles.projectImg}
-           style={{...position[2],backgroundImage:`url(${images && images[2] ?images[2]:null})`}}
-              variants={treeVariants}
-              whileHover={'shakeFruit'} 
-              animate={controlFruits}
-              onClick={()=>handleSelectedImage(2)}
-              >
-
-           </motion.div>
-           <motion.div className={styles.projectImg} 
-           style={{...position[3],backgroundImage:`url(${images && images[3] ?images[3]:null})`}}
-           variants={treeVariants}
-              whileHover={'shakeFruit'}
-              animate={controlFruits}
-              onClick={()=>handleSelectedImage(3)}
-              >
-
-           </motion.div>
-           <motion.div className={styles.projectImg} 
-           style={{...position[4],backgroundImage:`url(${images && images[4] ?images[4]:null})`}}
-           variants={treeVariants}
-              whileHover={'shakeFruit'}
-              animate={controlFruits}
-              onClick={()=>handleSelectedImage(4)}
-              >
-
-           </motion.div>
-           <motion.div className={styles.projectImg} 
-           style={{...position[5],backgroundImage:`url(${images && images[5] ?images[5]:null})`}}
-           variants={treeVariants}
-              whileHover={'shakeFruit'}
-              animate={controlFruits}
-              onClick={()=>handleSelectedImage(5)}
-              >
-
-           </motion.div>
+           
+           {
+            images && images.length >0 ? 
+            images.map((ele,index)=>{
+                if (index ===6 ) return
+                return (
+                    isLoaded ?
+                        <motion.div className={styles.projectImg} 
+                                style={{...position[index],backgroundImage:`url(${ele?ele:null})`}}
+                                variants={treeVariants}
+                                whileHover={'shakeFruit'}
+                                animate={controlFruits}
+                                onClick={()=>handleSelectedImage(index)}
+                                key={index}
+                                id={`img${index}`}
+                                >
+                        </motion.div>
+                        :
+                        <LoadingImage 
+                         key={index}
+                         imgSrc={ele}
+                         setLoaded={setLoaded}
+                         imgClass={styles.projectImg}
+                         style={{...position[index]}}
+                        />
+          
+                )
+            }):
+            null
+           }
+          
+        
            <motion.div className={styles.projectImg} 
            style={{left:'65%',top:'50%'}}
            variants={treeVariants}
