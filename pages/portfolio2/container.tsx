@@ -4,7 +4,7 @@ import Project from './project'
 import {sources} from '../../public/sources'
 import { useEffect, useState } from 'react'
 import Inspector from './inspector'
-import WaitPage from '../tools/waitPage/waitPage'
+
 let arr=new Array(8).fill(null)
 
  const Container =() =>{
@@ -57,16 +57,7 @@ let arr=new Array(8).fill(null)
                         selectedImage={inspectorOptions.selectedImage}
                         imgs={inspectorOptions.specImages} 
                         selectImage={changeSelectedImage}/>
-            <WaitPage imgs={[
-                             '/static/tree.png'
-                             ,'/static/root.png'
-                             ,'/static/sun.png'
-                             ,'/static/moon.png'
-                             ,'/static/me1.png'
-                             ,'/static/media/net.svg'
-                             ,'/static/soil.png'
-                             ]} 
-                        len={5}/>
+           
         </Grid>
     )
 }

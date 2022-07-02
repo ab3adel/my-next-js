@@ -6,12 +6,16 @@
         }
         .waitPageText {
             font-size: 1.2em;
+            div {
+                text-align: left;
+                width: 100%;
+            }
             .moreTime {
                
             }
             .patient{
                 font-weight:bold ;
-                color:blue;
+                color:rgb(92, 92, 109);
                 width: 100%;
                 display: flex;
                 justify-content: center;
