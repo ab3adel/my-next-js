@@ -37,7 +37,7 @@ const [animate,setAnimate]=useState({index:0,container:0,start:false})
                              ,'/static/media/net.svg'
                              ,'/static/soil.png'
                              ]} 
-                        len={5}/>
+                        len={7}/>
       </div>
                
 

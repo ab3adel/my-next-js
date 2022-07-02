@@ -55,9 +55,9 @@ const WaitPage= ({imgs,len}:iProps) =>{
 
 
     const handleImageLoading=(index:number)=>{
-        
+       
         if (len >0) {
-            if (index === len-1) {
+            if (index === len-1){
                 setOpen(false)
             }
         }
