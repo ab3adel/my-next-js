@@ -166,11 +166,18 @@ let positions = [
                                         <Grid item container xs ={12}
                                         padding={1}
                                         sx={{fontSize:{xs:'0.7em',sm:'1.4em',md:'1.4em'}}}>
-                                            <span>Python:</span> Django/web development - Qt/GUI 
-                                            <br/>
-                                            <span>C#:</span>  WPF /desktop development + ASP.Net /web development
-                                            <br/>
-                                            <span>JavaScript/TypeScript:</span>React + Node + Angular /web development 
+                                            <Grid item xs={12}>
+                                                
+                                                <span>Python:</span> Django/web development - Qt/GUI 
+                                            </Grid>
+                                            <Grid item xs={12}>
+
+                                                <span>C#:</span>  WPF /desktop development + ASP.Net /web development
+                                            </Grid>
+                                            <Grid item xs={12}>
+
+                                                <span>JavaScript/TypeScript:</span>React + Node + Angular /web development 
+                                            </Grid>
 
                                         </Grid>
 
