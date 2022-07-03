@@ -37,7 +37,7 @@ let arr =['/static/me1.png','/static/tree.png'
   setValue(newValue);
 
 };
-console.log(loaded)
+
 if (loaded) {
   return (
     <WaitPage imgs={arr} 
