@@ -14,7 +14,7 @@ interface iProps {
 const LoadingImage= (props:iProps)=>{
 const [isLoaded,setLoaded]=useState(false)
    const handleLoading=()=>{
-    console.log('loaded')
+
       props.setLoaded(true)
    }
 useEffect(()=>{

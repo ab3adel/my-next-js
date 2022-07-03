@@ -12,9 +12,12 @@ from '@mui/material'
 import {Star} from '@material-ui/icons'
 import { motion,Variants } from 'framer-motion'
 import { useEffect, useState } from 'react'
+import logo from '../../../public/static/B3d.png'
 
-
-interface iProps {imgs:string [],len:number}
+interface iProps {
+    imgs:StaticImageData [],len:number,
+    open:boolean,setOpen:Function
+}
 const waitVariant:Variants = {
     animate :{
         opacity:[0,1],
@@ -50,12 +53,12 @@ const waitVariant:Variants = {
 
 }
 
-const WaitPage= ({imgs,len}:iProps) =>{
-    const [open,setOpen]=useState(true)
-
+const WaitPage= ({imgs,len,open,setOpen}:iProps) =>{
+  
+  
 
     const handleImageLoading=(index:number)=>{
-       
+    
         if (len >0) {
             if (index === len-1){
                 setOpen(false)
@@ -67,7 +70,7 @@ useEffect(()=>{
     if (imgs && imgs.length >0) {
         imgs.forEach((ele,index)=>{
             let img = new Image()
-            img.src= ele 
+            img.src= ele .src
             img.addEventListener('load',()=>handleImageLoading(index))
         })
     }
@@ -105,7 +108,7 @@ useEffect(()=>{
                                      objectFit:'cover'
                                      ,maxHeight:'100%'
                                     ,maxWidth:'100%'}}
-                            src={'/static/B3d.png'}
+                            src={logo.src}
                             />      
                         </Grid>
                         <Grid item container xs={12}
