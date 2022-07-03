@@ -19,15 +19,11 @@ import {motion,useAnimation} from 'framer-motion'
 import AboutMe from './aboutMe/aboutMe'
 import WaitPage from './tools/waitPage/waitPage'
 
-import me from '../public/static/me1.png'
-import image1 from '../public/static/tree.png'
-import image2 from '../public/static/root.png'
-import image3 from '../public/static/sun.png'
-import image4 from '../public/static/moon.png'
-import image5 from '../public/static/soil.png'
-import image6 from '../public/static/net.svg'
+
 import { ClassNames } from '@emotion/react'
-let arr =[me,image1,image2,image3,image4,image5,image6]
+let arr =['/static/me1.png','/static/tree.png'
+         ,'/static/root.png','/static/sun.png',
+          '/static/moon.png','/static/soil.png','/static/net.svg']
  const  HomePage =()=> {
  const [open,setOpen]=useState(true)
  const [value,setValue]=useState(0)  

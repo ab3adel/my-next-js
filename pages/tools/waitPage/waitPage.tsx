@@ -15,7 +15,7 @@ import { useEffect, useState } from 'react'
 import logo from '../../../public/static/B3d.png'
 
 interface iProps {
-    imgs:StaticImageData [],len:number,
+    imgs:string [],len:number,
     open:boolean,setOpen:Function
 }
 const waitVariant:Variants = {
@@ -70,7 +70,7 @@ useEffect(()=>{
     if (imgs && imgs.length >0) {
         imgs.forEach((ele,index)=>{
             let img = new Image()
-            img.src= ele .src
+            img.src= ele
             img.addEventListener('load',()=>handleImageLoading(index))
         })
     }
@@ -108,7 +108,7 @@ useEffect(()=>{
                                      objectFit:'cover'
                                      ,maxHeight:'100%'
                                     ,maxWidth:'100%'}}
-                            src={logo.src}
+                            src={'/static/B3d.png'}
                             />      
                         </Grid>
                         <Grid item container xs={12}
