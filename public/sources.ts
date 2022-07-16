@@ -11,9 +11,9 @@ export const sources=[
             '/static/ui/ui6.png'],
     video:"undefined" ,
     gitHub:"undefined",
-    projectAbout:` perform  elegant user interfaces
+    projectAbout:` implementing elegant user interfaces
                    using React , converting silent designs
-                    to full interactiv and responsive pages `,
+                    to fully interactive and responsive pages `,
     techs  :   [
         {name:'JavaScript',imgSrc:'/static/js.png'},
         {name:'React',imgSrc:'static/react.png'}
@@ -34,8 +34,9 @@ export const sources=[
     ],
     video:"#",
     gitHub:"#",
-    projectAbout:` I  used React with Materia ui and Scss to design 
-                    this neat user interfaces , beside Redux for state managment `,
+    projectAbout:` implementing elegant user interfaces
+                    using React , converting silent designs
+                    to fully interactive and responsive pages`,
     techs      :[
                        {name:'TypeScritp',imgSrc: '/static/ts.png'},
                         {name:'JavaScript',imgSrc:'/static/js.png'},
@@ -56,7 +57,7 @@ Role : "Front End developer"
             '/static/wpf/wpf6.png'],
     video:"https://www.youtube.com/embed/bAapmpaPjW8" ,
     gitHub:"https://github.com/ab3adel/wpf.net-accountant-app",
-    projectAbout:` full functional accountant app for pc  
+    projectAbout:` full functional secure accountant app for pc  
                     with wonderfull interfaces which provided by XAML ` ,
      techs  :[
       {  name:'CSharp',imgSrc:'/static/cs.png'},
@@ -79,11 +80,10 @@ Role : "Front End developer"
     ],
     video:"https://www.youtube.com/embed/KckmYVCYkL4" ,
     gitHub:"https://github.com/ab3adel/React_Django",
-    projectAbout:` this website is an E-commerce for mobilePhones and
-                   its accessories , as you cans see the power of django
-                  in this prject the used tools were : django
-                  for backend with mySql DB , and React js 
-                   for front end , `,
+    projectAbout:` this website is an E-commerce for mobile Phones and
+    its accessories , as you can see the power of django
+   in this project , which gives the  scalability for the future needs 
+   , beside the high security that attached with django functions, `,
      techs     :[
         {name:'python',imgSrc:'/static/python.png'},
         {name:'SQLlite',imgSrc:'/static/sql.png'},
@@ -107,8 +107,8 @@ Role : "Front End developer"
         gitHub:"https://github.com/ab3adel/accountant-Python " ,
         projectAbout:`
                        built with pure python using PyQt library
-                       full funciont accountatn app suitable for 
-                       small to medium shop
+                       full funcional accountant app suitable for 
+                       small to medium shops , 
                       `   ,
         techs    :[
                        {name:'Python',imgSrc: '/static/python.png'},

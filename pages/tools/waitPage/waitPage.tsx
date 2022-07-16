@@ -61,7 +61,8 @@ const WaitPage= ({imgs,len,open,setOpen}:iProps) =>{
     
         if (len >0) {
             if (index === len-1){
-                setOpen(false)
+                setTimeout(()=>setOpen(false),2000)
+                
             }
         }
     }
