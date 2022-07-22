@@ -32,10 +32,10 @@ let arr =['/static/me1.png','/static/tree.png'
  const [value,setValue]=useState(0)  
  const [loaded,setLoaded]=useState(true)
  const [open,setOpen]=useState(true)
- const [admin,setAdmin]=useState(false)
+ const [visitor,setVisitor]=useState({admin:false,user:false})
  const [cookie,setCookie] = useCookies(['B3D-cookies'])
  const [sendStatus,setSendStatus] =useState({loading:false,done:false})
- let {openRate,setOpenRate} =useContext(animateContext)
+ let {openRate,setOpenRate,setCanVote} =useContext(animateContext)
  const handleChange = ( newValue:number) => {
   // let tabs= document.querySelectorAll('#tab')  as NodeListOf<HTMLDivElement>
   //  tabs.forEach(ele=>ele.classList.remove('selectedTab'))
@@ -45,7 +45,7 @@ let arr =['/static/me1.png','/static/tree.png'
 
 };
 useEffect(()=>{
- 
+ console.log(cookie['B3D-cookies'])
   if (cookie['B3D-cookies']) {
 
     //removeCookie('B3D-cookies')
@@ -57,8 +57,15 @@ useEffect(()=>{
      })
      .then(res=>res.json())
      .then(res=> {
+      console.log(res)
        if (res.admin === 1) {
-        setAdmin(true)
+        setVisitor(pre=>({...pre,admin:true}))
+       
+       }
+       else {
+        setVisitor(pre=>({...pre,user:true}))
+        setCanVote(false)
+       
        }
      
      })
@@ -66,25 +73,26 @@ useEffect(()=>{
        console.log(err)
      })
   }
-    // else {
-    //   let date = new Date()
-    //   date.setMonth(date.getMonth()+2)
-    //   let pass='B3D-Admin-0988289227@912'
-    //   fetch('/api/check',{
-    //     method:'POST',
-    //     headers:{'Content-Type':'application/json'},
-    //     body:JSON.stringify(pass)
-    //   })
-    //   .then(res=>res.json())
-    //   .then(res=> {
-    //     console.log(res)
-    //     if (res && res.hash) {
-    //       setCookie('B3D-cookies',res.hash,{path:'/',expires:date})
-    //     }
-    //   })
-    //   .catch(err=>{
-    //     console.log(err)
-    //   })
+     //else {
+      //  let date = new Date()
+      //  date.setMonth(date.getMonth()+2)
+      //  let pass='B3D-Admin-0988289227@912'
+      //  fetch('/api/check',{
+      //    method:'POST',
+      //    headers:{'Content-Type':'application/json'},
+      //    body:JSON.stringify(pass)
+      //  })
+      //  .then(res=>res.json())
+      //  .then(res=> {
+      //    console.log(res)
+      //    if (res && res.hash) {
+      //      setCookie('B3D-cookies',res.hash,{path:'/',expires:date})
+      //    }
+      //  })
+      //  .catch(err=>{
+      //    console.log(err)
+      //  })
+      
     
     // }
 },[])
@@ -107,15 +115,19 @@ setSendStatus(pre=>({...pre,loading:true,done:false}))
     body:JSON.stringify(str)
     
   })
-  .then(res=>
+  .then(res=>{
    setSendStatus(pre=>({...pre,loading:false,done:true}))
-    
+   let date = new Date()
+   date.setMonth(date.getMonth()+2)
+   setCookie('B3D-cookies','user',{path:'/',expires:date})
+   setCanVote(false)
+  }
     )
   .catch(err=>{
     console.log(err)
   })
 }
-
+console.log(visitor)
     return (
   
       <Grid 
@@ -181,13 +193,18 @@ setSendStatus(pre=>({...pre,loading:true,done:false}))
           <Caution open={openRate} setOpen={setOpenRate}
            data={props.data}
            addVote={sendVote}
-           isAdmin={admin}
+           isAdmin={visitor.admin}
            loading={sendStatus.loading}
-           done={sendStatus.done}/>
-           <Intro
+           done={sendStatus.done}
+           />
+           {
+            !(visitor.admin || visitor.user)
+            &&(
+            <Intro
             open={open}
             setOpen={setOpen}
-            />
+            />)
+            }
       </Grid>
  
     )

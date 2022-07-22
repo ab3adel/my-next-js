@@ -11,8 +11,16 @@ from
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from '../styles/header.module.scss'
-interface iProps {setOpenRate:Function}
-const Header =({setOpenRate}:iProps)=>{
+interface iProps {setOpenRate:Function,canVote:boolean}
+const Header =({setOpenRate,canVote}:iProps)=>{
+   const handleRate=()=>{
+      if (!canVote) {
+         return
+      }
+      else{
+         setOpenRate(true)
+      }
+   }
     return (
 
           <Toolbar sx={
@@ -46,8 +54,12 @@ const Header =({setOpenRate}:iProps)=>{
                            <GitHub/>
                         </Icon>
                   </a>
-                  <a onClick={()=>setOpenRate(true)}
-                    className={styles.rateMe}
+                  <a onClick={()=>handleRate()}
+                    className={canVote?
+                     styles.rateMe
+                     :''
+                  }
+                    
                     >
                         Rate Me
                         <Icon >

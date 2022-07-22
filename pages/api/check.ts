@@ -18,12 +18,19 @@ export default async function handler (req,res) {
            
               if (err) {
                   console.log(err)
+                  return
               }
             
               if (result) {
 
                   res.status(201).json({"admin":1})
+                  return
+                  
               }
+              if (!result){
+                res.status(201).json({"admin":0})
+              }
+
           })
      }
 
