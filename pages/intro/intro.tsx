@@ -25,13 +25,15 @@ const handleNextIntro=()=>{
    let introElement= ( <Image 
     src={intro1} 
     alt={'intro1'}
-  
+    priority={true}
+    quality={50}
     />)
     if (introNumber===2) {
         introElement=    <Image 
         src={intro2} 
         alt={'intro2'}
-      
+       priority={true}
+       quality={50}
         />
     }
     if (introNumber===3) {
