@@ -1,0 +1,26 @@
+
+.closeBtn {
+    display: flex;
+    justify-content: right;
+    transition: 0.2s ease-in-out all;
+    cursor: pointer;
+
+}
+.closeBtn:hover {
+    font-size:  larger;
+}
+.loveBtn  {
+    color:green
+}
+.notBadBtn {
+    color:rgb(109, 117, 109)
+}
+.improveBtn {
+    color:brown
+}
+.voteBtn.MuiButtonBase-root .MuiSvgIcon-root {
+    transition: 0.2s ease-in-out all;
+}
+.voteBtn:hover .MuiSvgIcon-root {
+    font-size: larger;
+}

@@ -6,7 +6,7 @@ import
   Box
 } 
 from '@mui/material'
-import { useState } from 'react'
+import { useEffect, useState ,useContext } from 'react'
 import Container from './portfolio2/container'
 import TabPanel from './tools/tabs/tabPanel'
 import 
@@ -18,17 +18,24 @@ from '@material-ui/icons'
 import {motion,useAnimation} from 'framer-motion'
 import AboutMe from './aboutMe/aboutMe'
 import WaitPage from './tools/waitPage/waitPage'
+import Caution from './caution'
 
-
-import { ClassNames } from '@emotion/react'
+import {useCookies} from 'react-cookie'
+import { rate } from './api/rate'
+import {animateContext} from './_app'
+import Intro from './intro/intro'
 let arr =['/static/me1.png','/static/tree.png'
          ,'/static/root.png','/static/sun.png',
           '/static/moon.png','/static/soil.png','/static/net.svg']
- const  HomePage =()=> {
- const [open,setOpen]=useState(true)
+ const  HomePage =(props:any)=> {
+ 
  const [value,setValue]=useState(0)  
  const [loaded,setLoaded]=useState(true)
- const controlTab =useAnimation()
+ const [open,setOpen]=useState(true)
+ const [admin,setAdmin]=useState(false)
+ const [cookie,setCookie] = useCookies(['B3D-cookies'])
+ const [sendStatus,setSendStatus] =useState({loading:false,done:false})
+ let {openRate,setOpenRate} =useContext(animateContext)
  const handleChange = ( newValue:number) => {
   // let tabs= document.querySelectorAll('#tab')  as NodeListOf<HTMLDivElement>
   //  tabs.forEach(ele=>ele.classList.remove('selectedTab'))
@@ -37,6 +44,50 @@ let arr =['/static/me1.png','/static/tree.png'
   setValue(newValue);
 
 };
+useEffect(()=>{
+ 
+  if (cookie['B3D-cookies']) {
+
+    //removeCookie('B3D-cookies')
+   
+     fetch('/api/check',{
+       method:'POST',
+       headers:{'Content-Type':'application/json'},
+       body:JSON.stringify(cookie['B3D-cookies'])
+     })
+     .then(res=>res.json())
+     .then(res=> {
+       if (res.admin === 1) {
+        setAdmin(true)
+       }
+     
+     })
+     .catch(err=>{
+       console.log(err)
+     })
+  }
+    // else {
+    //   let date = new Date()
+    //   date.setMonth(date.getMonth()+2)
+    //   let pass='B3D-Admin-0988289227@912'
+    //   fetch('/api/check',{
+    //     method:'POST',
+    //     headers:{'Content-Type':'application/json'},
+    //     body:JSON.stringify(pass)
+    //   })
+    //   .then(res=>res.json())
+    //   .then(res=> {
+    //     console.log(res)
+    //     if (res && res.hash) {
+    //       setCookie('B3D-cookies',res.hash,{path:'/',expires:date})
+    //     }
+    //   })
+    //   .catch(err=>{
+    //     console.log(err)
+    //   })
+    
+    // }
+},[])
 
 if (loaded) {
   return (
@@ -46,11 +97,32 @@ if (loaded) {
             setOpen={setLoaded}/>      
   )
 }
+const sendVote=async (str:string)=>{
+setSendStatus(pre=>({...pre,loading:true,done:false}))
+   fetch('/api/rate',{
+    method:'POST'
+    ,
+    headers:{'Content-Type':'application/json'}
+    ,
+    body:JSON.stringify(str)
+    
+  })
+  .then(res=>
+   setSendStatus(pre=>({...pre,loading:false,done:true}))
+    
+    )
+  .catch(err=>{
+    console.log(err)
+  })
+}
+
     return (
   
-      <Grid container
+      <Grid 
+      container
       padding={1} 
-      rowGap={4}>
+      rowGap={4}
+      >
           <Grid item container xs= {12}>
             <Box 
          
@@ -106,9 +178,30 @@ if (loaded) {
               <AboutMe />
             </TabPanel>
           </Grid>
+          <Caution open={openRate} setOpen={setOpenRate}
+           data={props.data}
+           addVote={sendVote}
+           isAdmin={admin}
+           loading={sendStatus.loading}
+           done={sendStatus.done}/>
+           <Intro
+            open={open}
+            setOpen={setOpen}
+            />
       </Grid>
  
     )
 }
 
-export default HomePage;
+export default HomePage; 
+
+export async function getServerSideProps  (context) {
+  let data = await rate()
+
+   return {
+       props:{
+           data,
+           test:"test"
+       }
+   }
+}

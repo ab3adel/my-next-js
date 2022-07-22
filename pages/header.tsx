@@ -4,13 +4,15 @@ import {Toolbar, Icon
 import  
 {LinkedIn
    ,GitHub
-,Telegram
+,Star
 } 
 from
 '@material-ui/icons'
 import Link from 'next/link'
 import Image from 'next/image'
-const Header =()=>{
+import styles from '../styles/header.module.scss'
+interface iProps {setOpenRate:Function}
+const Header =({setOpenRate}:iProps)=>{
     return (
 
           <Toolbar sx={
@@ -21,7 +23,8 @@ const Header =()=>{
           }
         } >
                   <Link href="/">
-                     <a style={{boxShadow:"0px 0px 0px transparent"}}>
+                     <a style={{boxShadow:"0px 0px 0px transparent"}}
+                      className={styles.link}>
                         <Image src="/static/logo.png"
                            className="logo"
                            alt="B3D"
@@ -29,22 +32,26 @@ const Header =()=>{
                         </a>
                   </Link>
                
-                  <a href ="https://www.linkedin.com/in/mohammad-ismael-755ba4199/" >
+                  <a href ="https://www.linkedin.com/in/mohammad-ismael-755ba4199/"
+                   className={styles.link} >
                         LinkedIn
                         <Icon color="inherit" >
                            <LinkedIn/>
                         </Icon>
                   </a>
-                  <a href="https://github.com/ab3adel">
+                  <a href="https://github.com/ab3adel"
+                  className={styles.link}>
                         GitHub
                         <Icon >
                            <GitHub/>
                         </Icon>
                   </a>
-                  <a href="https://t.me/Mohammadismaeeltelegram">
-                        Telegram
+                  <a onClick={()=>setOpenRate(true)}
+                    className={styles.rateMe}
+                    >
+                        Rate Me
                         <Icon >
-                           <Telegram/>
+                           <Star/>
                         </Icon>
                   </a>
           </Toolbar>

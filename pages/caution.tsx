@@ -1,50 +1,188 @@
-import 
-{
+
+
+import {ThumbUp,Update,AddCircle} from '@material-ui/icons'
+import { 
+    Typography 
+    ,
     Dialog,
     DialogTitle,
     DialogContent,
     DialogActions,
-    Button
+    Button,
+    Grid,
+    CircularProgress
+} 
+from '@mui/material'
+import { useEffect } from 'react'
+import styles from '../styles/caution.module.css'
+interface iProps {
+    open
+    ,setOpen,data?:any
+    ,addVote:Function
+    ,isAdmin:boolean
+    ,loading:boolean
+    ,done:boolean
 }
-from '@material-ui/core'
-import {useContext} from 'react'
-import {animateContext} from './_app'
-interface iProps {open,setOpen}
 
- const Caution =({open,setOpen}:iProps) =>{
-    const {setAnimate} =useContext(animateContext)
-  const   handleAnimation =()=>{
-      setAnimate((pre:any)=>({...pre,start:true}))
-      setOpen(false)
-    }
-    const handleClose =(_,reason)=>{
-        if (reason === 'escapeKeDown') return
-        setOpen(false)
+ const Caution =({open,setOpen
+                  ,addVote,isAdmin
+                  ,data,loading
+                ,done}:iProps ) =>{
+
+const handleClick=(str:string)=>{
+    addVote(str)
+    setOpen(false)
+}
+useEffect(()=>{
+if (done) {
+    setOpen(false)
+}
+},[done])
+if (isAdmin) {
+    if (data) {
+        data = JSON.parse(data)
     }
     return (
-        <Dialog open={open} 
-      
-        >
-            <DialogTitle>
-                Welcome ! 
-            </DialogTitle>
+        <Dialog open={open} >
             <DialogContent>
-            I appreciate your interest on me, I just want to tell you that
-                there is more splendid projects I have made since this website was online ,
-                in addition to update it with more fun stuff , I have to add them into
-                my portfolio, but My schedule is full ,
-                thanks for your understanding 
-                
+                <Grid container
+                >
+                    <Grid item container 
+                         
+                         xs={12}>
+                        <Grid item xs={6} >
+                            <Typography>
+                                Love It
+                            </Typography>
+                            <Typography>
+                                {data['lovedIt']}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={6} >
+                            <Typography>
+                                Not Bad
+                            </Typography>
+                            <Typography>
+                                {data['notBad']}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Typography>
+                                Need improvements 
+                            </Typography>
+                            <Typography>
+                                {data['improveIt']}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={6} >
+                            <Typography>
+                                Last modifications
+                            </Typography>
+                            <Typography>
+                                {data['lastRate']}
+                            </Typography>
+                        </Grid>
+                    </Grid>
+                </Grid>
             </DialogContent>
             <DialogActions>
-                <Button onClick={()=>handleAnimation()} >
-                    I understand that
-                </Button>
-                <Button onClick={()=>handleAnimation()} >
-                    Shame on you
+                <Button onClick={()=>setOpen(false)} >
+                    Ok
                 </Button>
             </DialogActions>
         </Dialog>
+)
+}
+    return (
+        <Dialog open={open} 
+         sx={{
+           '.MuiDialog-container' :{
+            '.MuiPaper-root' :{
+                minWidth:'200px',
+                minHeight:'200px'
+            }
+           }
+         }}
+        >
+            <DialogTitle>
+                <Grid container>
+                    <Grid item xs={6}>
+                       Rate Me 
+                    </Grid>
+                    <Grid item xs={6}
+                    onClick={()=>setOpen(false)}
+                     className={styles.closeBtn}>
+                        X
+                    </Grid>
+                </Grid>
+              
+            </DialogTitle>
+            {loading?
+            <CircularProgress 
+             size={40}
+             
+             />
+            :
+            <>
+                <DialogContent>
+                    Please , give me your opinion , it will be a big help !
+                </DialogContent>
+                <DialogActions
+                sx={{
+                    justifyContent:'space-around'
+                }}>
+                    <Button onClick={()=>handleClick('lovedIt')} 
+                    className={styles.loveBtn}
+                    sx={{
+                        
+                        display:'flex',
+                        flexDirection:'column'
+                
+                }
+                }>
+                        <Typography>
+
+                        Like It
+                        </Typography>
+                    <ThumbUp />
+                    
+                    </Button>
+                    <Button onClick={()=>handleClick('notBad')} 
+                    className={styles.notBadBtn}
+                    sx={{
+                        
+                            display:'flex',
+                            flexDirection:'column'
+                    
+                    }
+                    }>
+                        <Typography>
+                        Not Bad
+                        </Typography>
+                    <AddCircle />
+                    
+                    </Button>
+                    <Button onClick={()=>handleClick('improveIt')} 
+                    className={styles.improveBtn}
+                    sx={{
+                        
+                        display:'flex',
+                        flexDirection:'column'
+                
+                }
+                }>
+                        <Typography>
+                        Improve It
+                        </Typography>
+                    <Update />
+                    
+                    </Button>
+                </DialogActions>
+            </>
+            }
+        </Dialog>
     )
 }
+
+
 export default Caution;

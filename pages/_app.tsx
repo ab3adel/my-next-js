@@ -10,12 +10,13 @@ Box
 from '@mui/material'
 import Header from './header'
 
+import {CookiesProvider} from 'react-cookie'
 export const animateContext= createContext(null)
 
 
  const  App =  ({Component,pageProps}:AppProps) =>{
 
-const [animate,setAnimate]=useState({index:0,container:0,start:false})
+const [openRate,setOpenRate]=useState(false)
 
 
   return (
@@ -26,13 +27,17 @@ const [animate,setAnimate]=useState({index:0,container:0,start:false})
         gridColumn:"1/4",
         gridRow:"1/1",
      }} >
-       <Header />
+       <Header 
+        setOpenRate={setOpenRate}/>
         
       </Box>
       
        <div style={{gridRow:"2/2",gridColumn:"1/4"}}>
-       <animateContext.Provider value={{animate,setAnimate}}>
-         <Component {...pageProps}/>
+       <animateContext.Provider value={{openRate,setOpenRate}}>
+          <CookiesProvider>
+
+            <Component {...pageProps}/>
+          </CookiesProvider>
         </animateContext.Provider>
           
       </div>
