@@ -45,7 +45,7 @@ let arr =['/static/me1.png','/static/tree.png'
 
 };
 useEffect(()=>{
- console.log(cookie['B3D-cookies'])
+
   if (cookie['B3D-cookies']) {
 
     //removeCookie('B3D-cookies')
@@ -57,7 +57,7 @@ useEffect(()=>{
      })
      .then(res=>res.json())
      .then(res=> {
-      console.log(res)
+      
        if (res.admin === 1) {
         setVisitor(pre=>({...pre,admin:true}))
        
@@ -127,7 +127,7 @@ setSendStatus(pre=>({...pre,loading:true,done:false}))
     console.log(err)
   })
 }
-console.log(visitor)
+
     return (
   
       <Grid 
