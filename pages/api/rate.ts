@@ -1,8 +1,9 @@
 
 
 const fs= require('fs')
-
- let data =fs.readFileSync('data/rate.json','utf8')
+const path= require('path')
+const filePath = path.join(process.cwd(), 'data/rate.json');
+ let data =fs.readFileSync(filePath,'utf8')
 
 
 export async function rate () {
