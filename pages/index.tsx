@@ -89,7 +89,8 @@ useEffect(()=>{
     .then(res=> {
      
       if (res.admin === 1) {
-       setVisitor(pre=>({...pre,admin:true}))
+       setVisitor(pre=>({...pre,admin:true,user:false}))
+       setCanVote(true)
      
       
       }
