@@ -36,7 +36,7 @@ interface iProps {
                     display={'flex'}>
                         <TextField 
                         placeholder='User Name'
-                          value={auth.user} 
+                          value={auth && auth.user} 
                           onChange={handleInput}
                           type="text"
                           name="user"
@@ -48,7 +48,7 @@ interface iProps {
                     >
                         <TextField 
                         placeholder='Password '
-                          value={auth.password} 
+                          value={auth && auth.password} 
                           onChange={handleInput}
                           type="password"
                           name="password"
