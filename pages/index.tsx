@@ -53,7 +53,7 @@ let arr =['/static/me1.png','/static/tree.png'
 useEffect(()=>{
 
  
-   removeCookie('B3D-cookies')
+   //removeCookie('B3D-cookies')
     if (cookie['B3D-cookies']) {
       if ((cookie['B3D-cookies'] as string).includes('noVote') && (cookie['B3D-cookies'] as string).includes('user')) {
         setVisitor(pre=>({...pre,user:true}))
