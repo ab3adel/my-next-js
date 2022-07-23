@@ -71,8 +71,7 @@ const Header =({setOpenRate,canVote,setOpenLogIn,visitor}:iProps)=>{
                         </Icon>
                   </a>
                   {
-
-                  visitor.user?
+                     visitor&&visitor.user?
                      <a>
                         Welcome
                         <Icon >
