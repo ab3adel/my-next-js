@@ -50,29 +50,57 @@ useEffect(()=>{
 
     //removeCookie('B3D-cookies')
    
-     fetch('/api/check',{
-       method:'POST',
-       headers:{'Content-Type':'application/json'},
-       body:JSON.stringify(cookie['B3D-cookies'])
-     })
-     .then(res=>res.json())
-     .then(res=> {
+      fetch('/api/check',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(cookie['B3D-cookies'])
+      })
+      .then(res=>res.json())
+      .then(res=> {
       
-       if (res.admin === 1) {
-        setVisitor(pre=>({...pre,admin:true}))
+        if (res.admin === 1) {
+         setVisitor(pre=>({...pre,admin:true}))
        
-       }
-       else {
-        setVisitor(pre=>({...pre,user:true}))
-        setCanVote(false)
+        }
+        else {
+         setVisitor(pre=>({...pre,user:true}))
+         setCanVote(false)
        
-       }
+        }
      
-     })
-     .catch(err=>{
-       console.log(err)
-     })
+      })
+      .catch(err=>{
+        console.log(err)
+      })
+    // if (!localStorage.getItem('B3D-Storage')) {
+    //   localStorage.setItem('B3D-Storage',cookie['B3D-cookies'])
+    //   console.log('set')
+    // }
   }
+   if (localStorage.getItem('B3D-Storage')){
+    let hash = localStorage.getItem('B3D-Storage')
+   
+    fetch('/api/check',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(hash)
+    })
+    .then(res=>res.json())
+    .then(res=> {
+     
+      if (res.admin === 1) {
+       setVisitor(pre=>({...pre,admin:true}))
+     
+      
+      }
+      
+    
+    })
+    .catch(err=>{
+      console.log(err)
+    })
+
+   }
      //else {
       //  let date = new Date()
       //  date.setMonth(date.getMonth()+2)

@@ -7,7 +7,7 @@ import
     Grid
 } 
 from '@mui/material'
-import styles from './intro.module.scss'
+import styles from '../../styles/intro.module.scss'
 import Image from 'next/image'
 import intro1 from '../../public/static/intro1.png'
 import intro2 from '../../public/static/intro2.png'
