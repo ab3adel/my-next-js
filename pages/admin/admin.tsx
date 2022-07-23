@@ -66,7 +66,9 @@ interface iProps {
                 display:'flex',
                 justifyContent:'space-evenly'
              }}>
-                <Button onClick={()=>logIn()} >
+                <Button onClick={()=>logIn()} 
+                disabled={loading}
+                >
                     {
                         loading?
                         <CircularProgress size={40}/>
