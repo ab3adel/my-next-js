@@ -2,17 +2,20 @@
 import {Toolbar, Icon
 } from "@mui/material"
 import  
-{LinkedIn
+{
+   LinkedIn
    ,GitHub
-,Star
+   ,Star
+   ,Person
 } 
 from
 '@material-ui/icons'
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from '../styles/header.module.scss'
-interface iProps {setOpenRate:Function,canVote:boolean}
-const Header =({setOpenRate,canVote}:iProps)=>{
+interface iProps {setOpenRate:Function,canVote:boolean
+                  ,setOpenLogIn:Function,visitor:{user:boolean,admin:boolean}}
+const Header =({setOpenRate,canVote,setOpenLogIn,visitor}:iProps)=>{
    const handleRate=()=>{
       if (!canVote) {
          return
@@ -21,6 +24,7 @@ const Header =({setOpenRate,canVote}:iProps)=>{
          setOpenRate(true)
       }
    }
+ 
     return (
 
           <Toolbar sx={
@@ -66,6 +70,23 @@ const Header =({setOpenRate,canVote}:iProps)=>{
                            <Star/>
                         </Icon>
                   </a>
+                  {
+
+                  visitor.user?
+                     <a>
+                        Welcome
+                        <Icon >
+                           <Person/>
+                     </Icon>
+                     </a>:
+                     <a onClick={()=>setOpenLogIn(true)}
+                   className={styles.link}>
+                     Log In
+                     <Icon >
+                           <Person/>
+                     </Icon>
+                  </a>
+                  }
           </Toolbar>
     )
 }

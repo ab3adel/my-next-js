@@ -18,7 +18,8 @@ export const animateContext= createContext(null)
 
 const [openRate,setOpenRate]=useState(false)
 const [canVote,setCanVote]=useState(true)
-
+const [openLogIn,setOpenLogIn]=useState(false)
+const [visitor,setVisitor]=useState({admin:false,user:false})
   return (
     <div id="root" >
   
@@ -29,12 +30,17 @@ const [canVote,setCanVote]=useState(true)
      }} >
        <Header 
         setOpenRate={setOpenRate}
-        canVote={canVote}/>
+        canVote={canVote}
+        setOpenLogIn={setOpenLogIn}
+        visitor={visitor}/>
         
       </Box>
       
        <div style={{gridRow:"2/2",gridColumn:"1/4"}}>
-       <animateContext.Provider value={{openRate,setOpenRate,setCanVote}}>
+       <animateContext.Provider value={{openRate,setOpenRate
+                                       ,setCanVote,openLogIn
+                                       ,setOpenLogIn,visitor
+                                       ,setVisitor,canVote}}>
           <CookiesProvider>
 
             <Component {...pageProps}/>

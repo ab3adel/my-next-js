@@ -4,7 +4,8 @@ import
     DialogContent,
     DialogActions,
     Button,
-    Grid
+    Grid,
+    DialogTitle
 } 
 from '@mui/material'
 import styles from '../../styles/intro.module.scss'
@@ -70,6 +71,9 @@ const handleNextIntro=()=>{
     return (
         <Dialog className={styles.introContainer}
         open={open}>
+            <DialogTitle>
+                Welcome !!
+            </DialogTitle>
             <DialogContent
             sx={{overflow:'hidden'}}>
               {

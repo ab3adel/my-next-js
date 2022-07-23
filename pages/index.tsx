@@ -6,7 +6,7 @@ import
   Box
 } 
 from '@mui/material'
-import { useEffect, useState ,useContext } from 'react'
+import { useEffect, useState ,useContext, ChangeEvent } from 'react'
 import Container from './portfolio2/container'
 import TabPanel from './tools/tabs/tabPanel'
 import 
@@ -24,18 +24,24 @@ import {useCookies} from 'react-cookie'
 import { rate } from './api/rate'
 import {animateContext} from './_app'
 import Intro from './intro/intro'
+import LogIn from './admin/admin'
+interface iField {[key:string]:string}
 let arr =['/static/me1.png','/static/tree.png'
          ,'/static/root.png','/static/sun.png',
           '/static/moon.png','/static/soil.png','/static/net.svg']
+  
  const  HomePage =(props:any)=> {
  
  const [value,setValue]=useState(0)  
  const [loaded,setLoaded]=useState(true)
  const [open,setOpen]=useState(true)
- const [visitor,setVisitor]=useState({admin:false,user:false})
- const [cookie,setCookie] = useCookies(['B3D-cookies'])
+ 
+ const [cookie,setCookie,removeCookie] = useCookies(['B3D-cookies'])
  const [sendStatus,setSendStatus] =useState({loading:false,done:false})
- let {openRate,setOpenRate,setCanVote} =useContext(animateContext)
+ const [auth,setAuth]=useState<iField>({user:'',password:''})
+ let {openRate,setOpenRate,setCanVote
+       ,openLogIn,setOpenLogIn,visitor
+      ,setVisitor,canVote} =useContext(animateContext)
  const handleChange = ( newValue:number) => {
   // let tabs= document.querySelectorAll('#tab')  as NodeListOf<HTMLDivElement>
   //  tabs.forEach(ele=>ele.classList.remove('selectedTab'))
@@ -46,34 +52,22 @@ let arr =['/static/me1.png','/static/tree.png'
 };
 useEffect(()=>{
 
-  
-   if (localStorage.getItem('B3D-Storage')){
-    let hash = localStorage.getItem('B3D-Storage')
-   console.log(hash)
-    fetch('/api/check',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify(hash)
-    })
-    .then(res=>res.json())
-    .then(res=> {
-     
-      if (res.admin === 1) {
-       setVisitor(pre=>({...pre,admin:true,user:false}))
-       setCanVote(true)
-      }
-      
-    })
-    .catch(err=>{
-      console.log(err)
-    })
-
-   }
-   else {
+ 
+   //removeCookie('B3D-cookies')
     if (cookie['B3D-cookies']) {
-
-      //removeCookie('B3D-cookies')
-     
+      if ((cookie['B3D-cookies'] as string).includes('noVote') && (cookie['B3D-cookies'] as string).includes('user')) {
+        setVisitor(pre=>({...pre,user:true}))
+        setCanVote(false)
+      }
+      if (cookie['B3D-cookies']==='noVote') {
+        setCanVote(false)
+      }
+      if (cookie['B3D-cookies']==='user') {
+        setVisitor(pre=>({...pre,user:true}))
+      }
+    
+      if (cookie['B3D-cookies'] !== 'user' && cookie['B3D-cookies'] !=='noVote'){
+        
         fetch('/api/check',{
           method:'POST',
           headers:{'Content-Type':'application/json'},
@@ -96,12 +90,14 @@ useEffect(()=>{
         .catch(err=>{
           console.log(err)
         })
+      }
+     
       // if (!localStorage.getItem('B3D-Storage')) {
       //   localStorage.setItem('B3D-Storage',cookie['B3D-cookies'])
       //   console.log('set')
       // }
     }
-   }
+   
      //else {
       //  let date = new Date()
       //  date.setMonth(date.getMonth()+2)
@@ -145,16 +141,65 @@ setSendStatus(pre=>({...pre,loading:true,done:false}))
     
   })
   .then(res=>{
+  
    setSendStatus(pre=>({...pre,loading:false,done:true}))
    let date = new Date()
    date.setMonth(date.getMonth()+2)
-   setCookie('B3D-cookies','user',{path:'/',expires:date})
+   if (visitor.user){
+
+     setCookie('B3D-cookies','user,noVote',{path:'/',expires:date})
+   }
+   else {
+    setCookie('B3D-cookies','noVote',{path:'/',expires:date})
+   }
    setCanVote(false)
   }
     )
   .catch(err=>{
     console.log(err)
   })
+}
+const handleInput =(e:ChangeEvent)=>{
+
+  let input= e.target as HTMLInputElement
+
+  setAuth(pre=>({...pre,[input.name]:input.value}))
+}
+const logIn= ()=>{
+  if (auth['user'] && auth['password']){
+    let date = new Date()
+    date.setMonth(date.getMonth()+2)
+    fetch('/api/check',{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify(auth['password'])
+        })
+        .then(res=>res.json())
+        .then(res=> {
+          if (res.admin === 1) {
+            setVisitor(pre=>({...pre,admin:true}))
+            setCookie('B3D-cookies',auth['password'],{path:'/',expires:date})
+            setAuth(pre=>({...pre,user:'',password:''}))
+            setOpenLogIn(false)
+
+           }
+           else {
+            setVisitor(pre=>({...pre,admin:false,user:true}))
+            if (canVote){
+
+              setCookie('B3D-cookies','user',{path:'/',expires:date})
+            }
+            else {
+              setCookie('B3D-cookies','user,noVote',{path:'/',expires:date})
+            }
+            setAuth(pre=>({...pre,user:'',password:''}))
+            setOpenLogIn(false)
+           } 
+        })
+        .catch(err=>{
+          console.log(err)
+        })
+  }
 }
 
     return (
@@ -227,13 +272,19 @@ setSendStatus(pre=>({...pre,loading:true,done:false}))
            done={sendStatus.done}
            />
            {
-            !(visitor.admin || visitor.user)
+            !(visitor.admin || visitor.user || !canVote)
             &&(
             <Intro
             open={open}
             setOpen={setOpen}
             />)
             }
+           <LogIn 
+             open={openLogIn}
+             setOpen={setOpenLogIn}
+             handleInput={handleInput}
+             logIn={logIn}
+             auth={auth}/>
       </Grid>
  
     )
