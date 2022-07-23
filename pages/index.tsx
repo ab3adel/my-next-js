@@ -38,6 +38,7 @@ let arr =['/static/me1.png','/static/tree.png'
  
  const [cookie,setCookie,removeCookie] = useCookies(['B3D-cookies'])
  const [sendStatus,setSendStatus] =useState({loading:false,done:false})
+ const [logInStatus,setLogInStatus] =useState({loading:false,done:false})
  const [auth,setAuth]=useState<iField>({user:'',password:''})
  let {openRate,setOpenRate,setCanVote
        ,openLogIn,setOpenLogIn,visitor
@@ -167,6 +168,7 @@ const handleInput =(e:ChangeEvent)=>{
 }
 const logIn= ()=>{
   if (auth['user'] && auth['password']){
+    setLogInStatus(pre=>({...pre,loading:true}))
     let date = new Date()
     date.setMonth(date.getMonth()+2)
     fetch('/api/check',{
@@ -177,14 +179,17 @@ const logIn= ()=>{
         .then(res=>res.json())
         .then(res=> {
           if (res.admin === 1) {
+            setLogInStatus(pre=>({...pre,loading:false,done:true}))
             setVisitor(pre=>({...pre,admin:true}))
             setCookie('B3D-cookies',auth['password'],{path:'/',expires:date})
             setAuth(pre=>({...pre,user:'',password:''}))
+
             setOpenLogIn(false)
 
            }
            else {
             setVisitor(pre=>({...pre,admin:false,user:true}))
+            setLogInStatus(pre=>({...pre,loading:false,done:true}))
             if (canVote){
 
               setCookie('B3D-cookies','user',{path:'/',expires:date})
@@ -284,7 +289,9 @@ const logIn= ()=>{
              setOpen={setOpenLogIn}
              handleInput={handleInput}
              logIn={logIn}
-             auth={auth}/>
+             auth={auth}
+             done={logInStatus.done}
+             loading={logInStatus.loading}/>
       </Grid>
  
     )

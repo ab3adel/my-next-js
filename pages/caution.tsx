@@ -117,13 +117,8 @@ if (isAdmin) {
                 </Grid>
               
             </DialogTitle>
-            {loading?
-            <CircularProgress 
-             size={40}
-             
-             />
-            :
-            <>
+            
+        
                 <DialogContent>
                     Please , give me your opinion , it will be a big help !
                 </DialogContent>
@@ -131,55 +126,61 @@ if (isAdmin) {
                 sx={{
                     justifyContent:'space-around'
                 }}>
-                    <Button onClick={()=>handleClick('lovedIt')} 
-                    className={styles.loveBtn}
-                    sx={{
-                        
-                        display:'flex',
-                        flexDirection:'column'
-                
-                }
-                }>
-                        <Typography>
-
-                        Like It
-                        </Typography>
-                    <ThumbUp />
-                    
-                    </Button>
-                    <Button onClick={()=>handleClick('notBad')} 
-                    className={styles.notBadBtn}
-                    sx={{
-                        
+                   {loading?
+            <CircularProgress 
+             size={40}
+             
+             />
+            :<>
+                        <Button onClick={()=>handleClick('lovedIt')} 
+                        className={styles.loveBtn}
+                        sx={{
+                            
                             display:'flex',
                             flexDirection:'column'
                     
                     }
                     }>
-                        <Typography>
-                        Not Bad
-                        </Typography>
-                    <AddCircle />
-                    
-                    </Button>
-                    <Button onClick={()=>handleClick('improveIt')} 
-                    className={styles.improveBtn}
-                    sx={{
+                            <Typography>
+
+                            Like It
+                            </Typography>
+                        <ThumbUp />
                         
-                        display:'flex',
-                        flexDirection:'column'
-                
-                }
-                }>
-                        <Typography>
-                        Improve It
-                        </Typography>
-                    <Update />
+                        </Button>
+                        <Button onClick={()=>handleClick('notBad')} 
+                        className={styles.notBadBtn}
+                        sx={{
+                            
+                                display:'flex',
+                                flexDirection:'column'
+                        
+                        }
+                        }>
+                            <Typography>
+                            Not Bad
+                            </Typography>
+                        <AddCircle />
+                        
+                        </Button>
+                        <Button onClick={()=>handleClick('improveIt')} 
+                        className={styles.improveBtn}
+                        sx={{
+                            
+                            display:'flex',
+                            flexDirection:'column'
                     
-                    </Button>
+                    }
+                    }>
+                            <Typography>
+                            Improve It
+                            </Typography>
+                        <Update />
+                        
+                        </Button>
+            </>}
                 </DialogActions>
-            </>
-            }
+            
         </Dialog>
     )
 }

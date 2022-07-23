@@ -6,7 +6,8 @@ import
     Button,
     Grid,
     TextField,
-    DialogTitle
+    DialogTitle,
+    CircularProgress
 }
 from '@mui/material'
 import { ChangeEvent } from 'react'
@@ -16,9 +17,13 @@ interface iProps {
                 ,setOpen:Function
                 ,logIn:Function
             ,auth:any
+            ,done:boolean
+            ,loading:boolean
             ,handleInput:(e:ChangeEvent)=>void
         }
- const AdminForm = ({open,setOpen,logIn,auth,handleInput}:iProps) =>{
+ const AdminForm = ({open,setOpen,logIn
+                     ,auth,handleInput,loading
+                    ,done}:iProps) =>{
 
 
     return (
@@ -62,7 +67,13 @@ interface iProps {
                 justifyContent:'space-evenly'
              }}>
                 <Button onClick={()=>logIn()} >
-                    log in
+                    {
+                        loading?
+                        <CircularProgress size={40}/>
+                        :
+                       <> log in</>
+                    }
+              
                 </Button>
                 <Button onClick={()=>setOpen(false)} >
                     cancel
