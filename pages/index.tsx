@@ -46,40 +46,10 @@ let arr =['/static/me1.png','/static/tree.png'
 };
 useEffect(()=>{
 
-  if (cookie['B3D-cookies']) {
-
-    //removeCookie('B3D-cookies')
-   
-      fetch('/api/check',{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify(cookie['B3D-cookies'])
-      })
-      .then(res=>res.json())
-      .then(res=> {
-      
-        if (res.admin === 1) {
-         setVisitor(pre=>({...pre,admin:true}))
-       
-        }
-        else {
-         setVisitor(pre=>({...pre,user:true}))
-         setCanVote(false)
-       
-        }
-     
-      })
-      .catch(err=>{
-        console.log(err)
-      })
-    // if (!localStorage.getItem('B3D-Storage')) {
-    //   localStorage.setItem('B3D-Storage',cookie['B3D-cookies'])
-    //   console.log('set')
-    // }
-  }
+  
    if (localStorage.getItem('B3D-Storage')){
     let hash = localStorage.getItem('B3D-Storage')
-   
+   console.log(hash)
     fetch('/api/check',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
@@ -91,16 +61,46 @@ useEffect(()=>{
       if (res.admin === 1) {
        setVisitor(pre=>({...pre,admin:true,user:false}))
        setCanVote(true)
-     
-      
       }
       
-    
     })
     .catch(err=>{
       console.log(err)
     })
 
+   }
+   else {
+    if (cookie['B3D-cookies']) {
+
+      //removeCookie('B3D-cookies')
+     
+        fetch('/api/check',{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify(cookie['B3D-cookies'])
+        })
+        .then(res=>res.json())
+        .then(res=> {
+        
+          if (res.admin === 1) {
+           setVisitor(pre=>({...pre,admin:true}))
+         
+          }
+          else {
+           setVisitor(pre=>({...pre,user:true}))
+           setCanVote(false)
+         
+          }
+       
+        })
+        .catch(err=>{
+          console.log(err)
+        })
+      // if (!localStorage.getItem('B3D-Storage')) {
+      //   localStorage.setItem('B3D-Storage',cookie['B3D-cookies'])
+      //   console.log('set')
+      // }
+    }
    }
      //else {
       //  let date = new Date()
