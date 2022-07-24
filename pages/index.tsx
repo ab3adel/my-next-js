@@ -36,7 +36,8 @@ let arr =['/static/me1.png','/static/tree.png'
  const [loaded,setLoaded]=useState(true)
  const [open,setOpen]=useState(true)
  
- const [cookie,setCookie,removeCookie] = useCookies(['B3D-cookies'])
+ const [cookie,setCookie,removeCookie] = useCookies(['B3D-cookies','visitor'])
+
  const [sendStatus,setSendStatus] =useState({loading:false,done:false})
  const [logInStatus,setLogInStatus] =useState({loading:false,done:false})
  const [auth,setAuth]=useState<iField>({user:'',password:''})
@@ -98,7 +99,21 @@ useEffect(()=>{
       //   console.log('set')
       // }
     }
-   
+   if (!cookie['visitor']) {
+    let date = new Date()
+    date.setMonth(date.getMonth()+2)
+    fetch('/api/visitor',{
+      method:'POST',
+      body:JSON.stringify('visitor')
+    })
+    .then(res=>{
+      res.json()
+      setCookie('visitor','visitor',{path:'/',expires:date})
+    })
+    .catch(err=>{
+      console.log(err)
+    })
+   }
      //else {
       //  let date = new Date()
       //  date.setMonth(date.getMonth()+2)

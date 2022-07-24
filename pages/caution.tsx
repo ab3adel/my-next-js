@@ -82,6 +82,22 @@ if (isAdmin) {
                                 {data['lastRate']}
                             </Typography>
                         </Grid>
+                        <Grid item xs={6} >
+                            <Typography>
+                                Visitors Number:
+                            </Typography>
+                            <Typography>
+                                {data['visitors']}
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={6} >
+                            <Typography>
+                                Last Visit:
+                            </Typography>
+                            <Typography>
+                                {data['lastVisit']}
+                            </Typography>
+                        </Grid>
                     </Grid>
                 </Grid>
             </DialogContent>
