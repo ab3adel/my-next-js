@@ -38,10 +38,9 @@ if (done) {
     setOpen(false)
 }
 },[done])
+
 if (isAdmin) {
-    if (data) {
-        data = JSON.parse(data)
-    }
+    
     return (
         <Dialog open={open} >
             <DialogContent>

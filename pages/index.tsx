@@ -35,7 +35,11 @@ let arr =['/static/me1.png','/static/tree.png'
  const [value,setValue]=useState(0)  
  const [loaded,setLoaded]=useState(true)
  const [open,setOpen]=useState(true)
- 
+ const [rateInfo,setRateInfo]=useState({
+                      lovedIt:0,improveIt:0
+                      ,lastVisit:'',visitors:0
+                      ,lastRate:'',notBad:0
+})
  const [cookie,setCookie,removeCookie] = useCookies(['B3D-cookies','visitor'])
 
  const [sendStatus,setSendStatus] =useState({loading:false,done:false})
@@ -72,14 +76,20 @@ useEffect(()=>{
         
         fetch('/api/check',{
           method:'POST',
-          headers:{'Content-Type':'application/json'},
           body:JSON.stringify(cookie['B3D-cookies'])
         })
-        .then(res=>res.json())
-        .then(res=> {
-        
+        .then(res=>
+         
+          res.json()
+      
+        )
+        .then(res=>
+           {
+         
           if (res.admin === 1) {
            setVisitor(pre=>({...pre,admin:true}))
+           let data = JSON.parse(res.data)
+           setRateInfo(data)
          
           }
           else {
@@ -138,14 +148,7 @@ useEffect(()=>{
     // }
 },[])
 
-if (loaded) {
-  return (
-    <WaitPage imgs={arr} 
-            len={7}
-            open={loaded}
-            setOpen={setLoaded}/>      
-  )
-}
+
 const sendVote=async (str:string)=>{
 setSendStatus(pre=>({...pre,loading:true,done:false}))
    fetch('/api/rate',{
@@ -221,7 +224,15 @@ const logIn= ()=>{
         })
   }
 }
-
+console.log(rateInfo)
+if (loaded) {
+  return (
+    <WaitPage imgs={arr} 
+            len={7}
+            open={loaded}
+            setOpen={setLoaded}/>      
+  )
+}
     return (
   
       <Grid 
@@ -285,7 +296,7 @@ const logIn= ()=>{
             </TabPanel>
           </Grid>
           <Caution open={openRate} setOpen={setOpenRate}
-           data={props.data}
+           data={rateInfo}
            addVote={sendVote}
            isAdmin={visitor.admin}
            loading={sendStatus.loading}
@@ -315,11 +326,11 @@ const logIn= ()=>{
 export default HomePage; 
 
 export async function getServerSideProps  (context) {
-  let data = await rate()
+
 
    return {
        props:{
-           data,
+          
            test:"test"
        }
    }

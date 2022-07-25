@@ -11,8 +11,8 @@ export  default async function handler (req:NextApiRequest,res:NextApiResponse) 
     if (req.body==='"visitor"') {
         fs.readFile(filePath,'utf8',function(err,data){
             if (err) {
-                res.status(500).send('error')
-                return
+                res.status(500).json({err})
+                
             }
             else {
                 let date= new Date()
@@ -26,7 +26,7 @@ export  default async function handler (req:NextApiRequest,res:NextApiResponse) 
                 fs.writeFile('data/rate.json',JSON.stringify(theData),function(err){
                     console.log(err)
                 })
-                return res.status(200).send('ok')
+                 res.status(200).json({ok:'ok'})
             }
         })
       
