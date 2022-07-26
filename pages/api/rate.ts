@@ -11,6 +11,10 @@ export async function rate () {
 }
 
 export default async function handler(req,res) {
+    let str=req.body
+    if (req.body && req.body.charAt(0)==='"'){
+        str=JSON.parse(req.body)
+    }
     try {
          fs.readFile('data/rate.json','utf8',function(err,data){
             if (!err){
@@ -22,19 +26,20 @@ export default async function handler(req,res) {
                 let month = date.getMonth() + 1;
                 let year = date.getFullYear();
                 
-                if (req.body=== 'lovedIt') {
+                if (str=== 'lovedIt') {
                     theData['lovedIt']=theData['lovedIt'] +1
                     
                 }
-                if (req.body=== 'notBad') {
+                if (str=== 'notBad') {
                     theData['notBad']=theData['notBad'] +1
         
                 }
-                if (req.body=== 'improveIT') {
+                if (str=== 'improveIT') {
                     theData['improveIt']=theData['improvIt'] +1
         
                 }
                 theData['lastRate']=`${day}-${month}-${year}`
+              
                 fs.writeFile('data/rate.json',JSON.stringify(theData),function(err){
                     if (!err) {
                   
