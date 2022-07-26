@@ -85,7 +85,7 @@ useEffect(()=>{
         )
         .then(res=>
            {
-         
+       
           if (res.admin === 1) {
            setVisitor(pre=>({...pre,admin:true}))
            let data = JSON.parse(res.data)
@@ -154,8 +154,6 @@ setSendStatus(pre=>({...pre,loading:true,done:false}))
    fetch('/api/rate',{
     method:'POST'
     ,
-    headers:{'Content-Type':'application/json'}
-    ,
     body:JSON.stringify(str)
     
   })
@@ -196,12 +194,14 @@ const logIn= ()=>{
         })
         .then(res=>res.json())
         .then(res=> {
+
           if (res.admin === 1) {
             setLogInStatus(pre=>({...pre,loading:false,done:true}))
             setVisitor(pre=>({...pre,admin:true}))
             setCookie('B3D-cookies',auth['password'],{path:'/',expires:date})
             setAuth(pre=>({...pre,user:'',password:''}))
-
+            let data = JSON.parse(res.data)
+            setRateInfo(data)
             setOpenLogIn(false)
 
            }
@@ -224,7 +224,7 @@ const logIn= ()=>{
         })
   }
 }
-console.log(rateInfo)
+
 if (loaded) {
   return (
     <WaitPage imgs={arr} 

@@ -11,7 +11,8 @@ export  default async function handler (req:NextApiRequest,res:NextApiResponse) 
     if (req.body==='"visitor"') {
         fs.readFile(filePath,'utf8',function(err,data){
             if (err) {
-                res.status(500).json({err})
+          
+                res.status(500).send("error")
                 
             }
             else {
@@ -24,12 +25,15 @@ export  default async function handler (req:NextApiRequest,res:NextApiResponse) 
                 theData['lastVisit']=`${day}-${month}-${year}`
  
                 fs.writeFile('data/rate.json',JSON.stringify(theData),function(err){
-                    console.log(err)
+                   if (err) {
+                    res.status(500).send('error')
+                   }
                 })
-                 res.status(200).json({ok:'ok'})
+             
+                 res.send({ok:'ok'})
             }
         })
       
     }
-    res.status(400).send('bad request')
+    res.status(400)
 }
