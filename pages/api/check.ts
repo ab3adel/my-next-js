@@ -24,7 +24,7 @@ export default async function handler (req:NextApiRequest,res:NextApiResponse) {
             }
             
                 bycrpt.compare(pass,hash,function(err,result) {
-                    console.log(result,req.body)
+
                     if (err) {
                         res.status(500).send('error')
                     
