@@ -1,7 +1,7 @@
 import {NextApiRequest,NextApiResponse} from 'next'
 const fs= require('fs')
 const path= require('path')
-const filePath = path.join(process.cwd(), 'data/rate.json');
+const filePath = path.join(process.cwd(), 'public/data/rate.json');
 
 let data = fs.readFileSync(filePath,'utf8')
 

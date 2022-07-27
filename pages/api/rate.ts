@@ -2,7 +2,7 @@
 
 const fs= require('fs')
 const path= require('path')
-const filePath = path.join(process.cwd(), 'data/rate.json');
+const filePath = path.join(process.cwd(), 'public/data/rate.json');
  
 export async function rate () {
   
@@ -40,7 +40,7 @@ export default async function handler(req,res) {
                 }
                 theData['lastRate']=`${day}-${month}-${year}`
               
-                fs.writeFile('data/rate.json',JSON.stringify(theData),function(err){
+                fs.writeFile(filePath,JSON.stringify(theData),function(err){
                     if (!err) {
                   
                         res.send({name:"done"})

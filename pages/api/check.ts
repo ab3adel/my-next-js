@@ -2,7 +2,7 @@ import {NextApiRequest,NextApiResponse} from 'next'
 const bycrpt = require('bcryptjs')
 const fs= require('fs')
 const path= require('path')
-const filePath = path.join(process.cwd(), 'data/rate.json');
+const filePath = path.join(process.cwd(), 'public/data/rate.json');
 export default async function handler (req:NextApiRequest,res:NextApiResponse) {
     let pass='B3D-Admin-0988289227@912'
    
