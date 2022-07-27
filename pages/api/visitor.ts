@@ -12,8 +12,8 @@ export  default async function handler (req:NextApiRequest,res:NextApiResponse) 
         fs.readFile(filePath,'utf8',function(err,data){
             if (err) {
           
-                res.status(500).send('error')
-                return
+                res.status(500).json({err})
+             
                 
             }
             else {
@@ -27,16 +27,16 @@ export  default async function handler (req:NextApiRequest,res:NextApiResponse) 
  
                 fs.writeFile('data/rate.json',JSON.stringify(theData),function(err){
                    if (err) {
-                    res.send('error')
+                   res.status(500).json({err})
                     return
                    }
                 })
              
-                 res.send({ok:'ok'})
-                 return
+                 res.status(200).send({ok:'ok'})
+              
             }
         })
       
     }
-    res.status(400).send('error')
+ 
 }
