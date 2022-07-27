@@ -20,7 +20,7 @@ export  default async function handler (req:NextApiRequest,res:NextApiResponse) 
             theData['visitors']=theData['visitors'] +1
             theData['lastVisit']=`${day}-${month}-${year}`
 
-            fs.writeFile('data/rate.json',JSON.stringify(theData),function(err){
+            fs.writeFile(filePath,JSON.stringify(theData),function(err){
                  if (err) {
                 res.status(500).json({err})
                 return
