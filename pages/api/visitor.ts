@@ -21,13 +21,17 @@ export  default async function handler (req:NextApiRequest,res:NextApiResponse) 
             theData['lastVisit']=`${day}-${month}-${year}`
 
             fs.writeFile('data/rate.json',JSON.stringify(theData),function(err){
-                // if (err) {
-                // res.status(500).json({err})
+                 if (err) {
+                res.status(500).json({err})
+                return
                
-                // }
+                }
+                else {
+                    res.status(200).send({ok:'ok'})
+                }
             })
             
-            res.status(200).send({ok:'ok'})
+            
               
             
        
