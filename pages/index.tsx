@@ -85,7 +85,7 @@ useEffect(()=>{
         )
         .then(res=>
            {
-       console.log(res)
+       
           if (res.admin === 1) {
            setVisitor(pre=>({...pre,admin:true}))
       
@@ -233,7 +233,7 @@ if (loaded) {
             setOpen={setLoaded}/>      
   )
 }
-
+console.log(visitor,  !(visitor.admin || visitor.user || !canVote))
     return (
   
       <Grid 
