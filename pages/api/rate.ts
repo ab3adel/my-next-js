@@ -1,8 +1,6 @@
 
-
-const fs= require('fs')
-const path= require('path')
-const filePath = path.join(process.cwd(), 'public/data/rate.json');
+import connectToDB from '../../utils/connect'
+import RateObj from '../../models/rates'
  
 export async function rate () {
   
@@ -16,46 +14,33 @@ export default async function handler(req,res) {
         str=JSON.parse(req.body)
     }
     try {
-         fs.readFile('data/rate.json','utf8',function(err,data){
-            if (!err){
 
-                let theData= JSON.parse(data)
+                await connectToDB()
                 let date= new Date()
             
                 let day = date.getDate();
                 let month = date.getMonth() + 1;
                 let year = date.getFullYear();
-                
+                let res=null
                 if (str=== 'lovedIt') {
-                    theData['lovedIt']=theData['lovedIt'] +1
+                  
+                     res= await RateObj.updateOne({},{$inc:{"lovedIt":1},"lastRate":`${day}-${month}-${year}`})
                     
                 }
                 if (str=== 'notBad') {
-                    theData['notBad']=theData['notBad'] +1
-        
-                }
-                if (str=== 'improveIT') {
-                    theData['improveIt']=theData['improvIt'] +1
-        
-                }
-                theData['lastRate']=`${day}-${month}-${year}`
-              
-                fs.writeFile(filePath,JSON.stringify(theData),function(err){
-                    if (!err) {
                   
-                        res.send({name:"done"})
+                     res= await RateObj.updateOne({},{$inc:{"notBad":1},"lastRate":`${day}-${month}-${year}`})
         
-                    }
-                    else {
-                        
-                        res.status(500).send()
-                    }
-                })
-            }
-            else {
-                res.status(500).send('error')
-            }
-            })
+                }
+                if (str=== 'improveIt') {
+                     res= await RateObj.updateOne({},{$inc:{"improveIt":1},"lastRate":`${day}-${month}-${year}`})
+        
+                }
+               
+              
+               res.send({name:'done'})
+          
+           
      
             
     }

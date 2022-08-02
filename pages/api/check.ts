@@ -1,9 +1,15 @@
+import RateObj from '../../models/rates'
+import connectToDB from '../../utils/connect'
 import {NextApiRequest,NextApiResponse} from 'next'
 const bycrpt = require('bcryptjs')
-const fs= require('fs')
 const path= require('path')
 const filePath = path.join(process.cwd(), 'public/data/rate.json');
+
+
+
+
 export default async function handler (req:NextApiRequest,res:NextApiResponse) {
+
     let pass='B3D-Admin-0988289227@912'
    
     if (req.body) {
@@ -23,32 +29,30 @@ export default async function handler (req:NextApiRequest,res:NextApiResponse) {
                 hash=JSON.parse(req.body)
             }
             
-                bycrpt.compare(pass,hash,function(err,result) {
-
-                    if (err) {
-                        res.status(500).send('error')
-                    
-                    }
-                  
+                     let result  = await bycrpt.compare(pass,hash) 
                     if (result) {
-                  
-                      
-                             fs.readFile(filePath,'utf8',function(err,data){
-                              if (err){
-                                  res.status(500).send("error")
-                              }
-                              else {
-                                  res.send({"admin":1,data})
-                              }
-                          })
-                          
+                    
+                        await connectToDB()
                         
+                            //   let rateData= new x({"lovedIt":0
+                            //                               ,"notBad":0
+                            //                               ,"improveIt":0
+                            //                               ,"lastRate":""
+                            //                               ,"visitors":0
+                            //                               ,"lastVisit":""})
+                            //     rateData.save()
+                            //              .then(res=>console.log(res))
+                            //              .catch(err=>console.log(err))
+                      
+                                
+                     
+                     
+                         let data = await RateObj.find()
+                      
+                       res.send({admin:1,data:data[0]})
                     }
-                    if (!result){
-                      res.send({"admin":0})
-                    }
-      
-                })
+                             
+          
         }
         catch(err) {
            res.status(500).send('error')

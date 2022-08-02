@@ -1,40 +1,29 @@
 import {NextApiRequest,NextApiResponse} from 'next'
-const fs= require('fs')
-const path= require('path')
-const filePath = path.join(process.cwd(), 'public/data/rate.json');
 
-let data = fs.readFileSync(filePath,'utf8')
-
+import connectToDB from '../../utils/connect'
+import RateObj from '../../models/rates'
 
 export  default async function handler (req:NextApiRequest,res:NextApiResponse) {
   
    
     if (req.body==='"visitor"') {
-           
-          
+           try {
+          await connectToDB()
             let date= new Date()
             let day = date.getDate();
             let month = date.getMonth() + 1;
             let year = date.getFullYear();
-            let theData= JSON.parse(data)
-            theData['visitors']=theData['visitors'] +1
-            theData['lastVisit']=`${day}-${month}-${year}`
+           
 
-            fs.writeFile(filePath,JSON.stringify(theData),function(err){
-                 if (err) {
-                res.status(500).json({err})
-                return
-               
-                }
-                else {
-                    res.status(200).send({ok:'ok'})
-                }
-            })
+            let resu= await RateObj.updateOne({},{$inc:{"visitors":1},"lastVisit":`${day}-${month}-${year}`})
             
             
               
-            
-       
+            res.send({ok:'ok'})
+       }
+       catch (err){
+        res.status(400).send({error:err})
+       }
       
     }
  

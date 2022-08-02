@@ -85,11 +85,11 @@ useEffect(()=>{
         )
         .then(res=>
            {
-       
+       console.log(res)
           if (res.admin === 1) {
            setVisitor(pre=>({...pre,admin:true}))
-           let data = JSON.parse(res.data)
-           setRateInfo(data)
+      
+           setRateInfo(res.data)
          
           }
           else {
@@ -233,6 +233,7 @@ if (loaded) {
             setOpen={setLoaded}/>      
   )
 }
+
     return (
   
       <Grid 
