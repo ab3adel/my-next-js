@@ -59,7 +59,7 @@ interface iProps {
                                                             display:'flex',
                                                            
                                                          }}>
-                                                            <img src={ele.imgSrc} />
+                                                           
                                                             <span>{ele.name}</span>
                                                         </Typography>
                                                     )

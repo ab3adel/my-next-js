@@ -23,12 +23,12 @@ interface iProps {images:string []
     return (
       
                 <Grid item container 
-                    xs={12} sm={4} md={3} lg={3}
+                    xs={12} sm={6} 
                     className={styles.project}
                     padding={1}>
                     
              
-                <Grid item  xs={12}
+                <Grid item xs={12}  sm={10}
                 >
               
 
@@ -36,7 +36,7 @@ interface iProps {images:string []
                      />
                     <div className={styles.inViewDiv} ref={ref} />
                 </Grid>
-                <Grid item xs={12}
+                <Grid item xs={12} sm={10}
                 >
                     <Root techs={props.techs} 
                             about={props.about}

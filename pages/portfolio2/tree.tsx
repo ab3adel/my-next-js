@@ -96,6 +96,7 @@ const treeVariants:Variants ={
     }),
     starOff : {
         opacity:[1,0],
+        filter:'none',
         transition:{
             ease:'backInOut',
             duration:2 ,
@@ -130,12 +131,12 @@ for (let i =0;i<11;i++) {
             let newPositions= [
                
                         
-        {left:'39%',top:'50%'},
-        {left:'43%',top:'40%'},
-        {left:'59%',top:'48%'},
-        {left:'24%',top:'62%'},
-        {left:'54%',top:'62%'},
-        {left:'73%',top:'58%'}
+        {left:'44%',top:'50%'},
+        {left:'46%',top:'40%'},
+        {left:'55%',top:'48%'},
+        {left:'35%',top:'62%'},
+        {left:'53%',top:'62%'},
+        {left:'64%',top:'58%'}
             ]
             setPosition(newPositions)
         }
@@ -234,9 +235,11 @@ for (let i =0;i<11;i++) {
             images.map((ele,index)=>{
                 if (index ===6 ) return
                 return (
-                    isLoaded ?
+                   
                         <motion.div className={styles.projectImg} 
-                                style={{...position[index],backgroundImage:`url(${ele?ele:null})`}}
+                                style={{...position[index]
+                                    ,backgroundImage:inView?`url(${ele?ele:null})`:'none'
+                                }}
                                 variants={treeVariants}
                                 whileHover={'shakeFruit'}
                                 animate={controlFruits}
@@ -245,14 +248,7 @@ for (let i =0;i<11;i++) {
                                 id={`img${index}`}
                                 >
                         </motion.div>
-                        :
-                        <LoadingImage 
-                         key={index}
-                         imgSrc={ele}
-                         setLoaded={setLoaded}
-                         imgClass={styles.projectImg}
-                         style={{...position[index]}}
-                        />
+                        
           
                 )
             }):

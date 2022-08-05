@@ -233,7 +233,7 @@ if (loaded) {
             setOpen={setLoaded}/>      
   )
 }
-console.log(visitor,  !(visitor.admin || visitor.user || !canVote))
+
     return (
   
       <Grid 
