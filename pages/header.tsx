@@ -1,15 +1,10 @@
 
-import {Toolbar, Icon
-} from "@mui/material"
-import  
-{
-   LinkedIn
-   ,GitHub
-   ,Star
-   ,Person
-} 
-from
-'@material-ui/icons'
+import Toolbar from '@mui/material/Toolbar'
+import Icon from '@mui/material/Icon'
+import LinkedIn from '@material-ui/icons/LinkedIn'
+import GitHub from '@material-ui/icons/GitHub'
+import Star from '@material-ui/icons/Star'
+import Person from '@material-ui/icons/Person'
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from '../styles/header.module.scss'

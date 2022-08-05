@@ -2,12 +2,8 @@ import { AppProps } from "next/app"
 import '../styles/global.css'
 import React, {useState,createContext} from 'react'
 
-import 
-{
-Toolbar,
-Box
-}
-from '@mui/material'
+ 
+import Box from '@mui/material/Box'
 import Header from './header'
 
 import {CookiesProvider} from 'react-cookie'

@@ -1,5 +1,5 @@
 import {motion,Variants,useAnimation, MotionConfig} from 'framer-motion'
-import {Grid} from '@mui/material'
+import Grid from '@mui/material/Grid'
 import styles from '../../styles/portfolio.module.scss'
 import { useEffect, useState } from 'react'
 import Info from './info'

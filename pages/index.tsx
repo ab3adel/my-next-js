@@ -1,27 +1,17 @@
 import style from '../styles/index.module.css'
-
-import 
-{
-  Grid,
-  Box
-} 
-from '@mui/material'
+import Grid from '@mui/material/Grid'
+import Box from '@mui/material/Box'
 import { useEffect, useState ,useContext, ChangeEvent } from 'react'
 import Container from './portfolio2/container'
 import TabPanel from './tools/tabs/tabPanel'
-import 
-{
-  ShowChart,
-  Person
-} 
-from '@material-ui/icons'
+import  ShowChart  from '@material-ui/icons/ShowChart'
+import Person from '@material-ui/icons/Person'
 import {motion,useAnimation} from 'framer-motion'
 import AboutMe from './aboutMe/aboutMe'
 import WaitPage from './tools/waitPage/waitPage'
 import Caution from './caution'
 
 import {useCookies} from 'react-cookie'
-import { rate } from './api/rate'
 import {animateContext} from './_app'
 import Intro from './intro/intro'
 import LogIn from './admin/admin'

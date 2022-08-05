@@ -1,18 +1,14 @@
 import styles from './waitPage.module.scss'
 
-import 
-{ 
-    Grid ,
-    Dialog,
-    DialogContent,
-    CircularProgress
 
-}
-from '@mui/material'
-import {Star} from '@material-ui/icons'
+import Dialog from '@mui/material/Dialog'
+import DialogContent from '@mui/material/DialogContent'
+
+import Grid from '@mui/material/Grid'
+
 import { motion,Variants } from 'framer-motion'
 import { useEffect, useState } from 'react'
-import logo from '../../../public/static/B3d.png'
+
 
 interface iProps {
     imgs:string [],len:number,

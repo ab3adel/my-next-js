@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material"
+import Grid  from "@mui/material/Grid"
 import Tree from './tree'
 import Root from './root'
 import styles from '../../styles/portfolio.module.scss'

@@ -1,10 +1,6 @@
-import 
-{
-    Divider,
-    Grid, Typography,
 
-} 
-from '@mui/material'
+import Divider from '@mui/material/Divider'
+import Grid from '@mui/material/Grid'
 import { motion, Variants ,useAnimation} from 'framer-motion'
 import styles from './aboutMe.module.scss'
 

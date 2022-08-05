@@ -1,13 +1,10 @@
-import 
-{
-    Dialog,
-    DialogContent,
-    DialogActions,
-    Button,
-    Grid,
-    DialogTitle
-} 
-from '@mui/material'
+
+import Dialog from '@mui/material/Dialog'
+import DialogContent from '@mui/material/DialogContent'
+import DialogActions from '@mui/material/DialogActions'
+import Button from '@mui/material/Button'
+import Grid from '@mui/material/Grid'
+import DialogTitle from '@mui/material/DialogTitle'
 import styles from '../../styles/intro.module.scss'
 import Image from 'next/image'
 import intro1 from '../../public/static/intro1.webp'

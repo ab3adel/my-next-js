@@ -1,7 +1,7 @@
-import { Brightness1 } from '@material-ui/icons'
+
 import {motion,Variants,useAnimation} from 'framer-motion'
 import React, { useEffect, useState } from 'react'
-import LoadingImage from '../tools/loadingImage/loadingImage'
+
 import styles from '../../styles/portfolio.module.scss'
 interface iProps {
             setInspectorOptions:Function,id:number,

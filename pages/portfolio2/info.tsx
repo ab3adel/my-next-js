@@ -1,9 +1,13 @@
-import {Grid ,Tabs,Tab,Divider, Typography} from '@mui/material'
 
+
+import Divider from '@mui/material/Divider'
+import Grid from '@mui/material/Grid'
+
+import Typography  from '@mui/material/Typography'
 import styles from '../../styles/portfolio.module.scss'
 
 import { useState } from 'react'
-import {GitHub, Headset,Subject} from '@material-ui/icons'
+
 interface iTech {name:string,imgSrc:string}
 interface iProps {
     about:string,techs:iTech []

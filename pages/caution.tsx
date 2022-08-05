@@ -1,18 +1,16 @@
 
 
-import {ThumbUp,Update,AddCircle} from '@material-ui/icons'
-import { 
-    Typography 
-    ,
-    Dialog,
-    DialogTitle,
-    DialogContent,
-    DialogActions,
-    Button,
-    Grid,
-    CircularProgress
-} 
-from '@mui/material'
+import ThumbUp from '@material-ui/icons/ThumbUp'
+import Update  from '@material-ui/icons/Update'
+import  AddCircle from '@material-ui/icons/AddCircle'
+import Dialog from '@mui/material/Dialog'
+import DialogContent from '@mui/material/DialogContent'
+import DialogActions from '@mui/material/DialogActions'
+import Button from '@mui/material/Button'
+import Grid from '@mui/material/Grid'
+import DialogTitle from '@mui/material/DialogTitle'
+import CircularProgress from '@mui/material/CircularProgress'
+import Typography  from '@mui/material/Typography'
 import { useEffect } from 'react'
 import styles from '../styles/caution.module.css'
 interface iProps {

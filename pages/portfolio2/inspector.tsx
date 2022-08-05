@@ -1,17 +1,12 @@
-import
- {
-    Dialog
-    ,DialogActions
-    ,DialogContent
-} 
-from '@mui/material'
-import 
-{
-    Close,
-    ArrowLeft,
-    ArrowRight
-} 
-from '@material-ui/icons'
+
+import Dialog from '@mui/material/Dialog'
+import DialogContent from '@mui/material/DialogContent'
+import DialogActions from '@mui/material/DialogActions'
+
+
+import Close from '@material-ui/icons/Close'
+import  ArrowLeft   from '@material-ui/icons/ArrowLeft'
+import ArrowRight from '@material-ui/icons/ArrowRight'
 import styles from '../../styles/inspector.module.scss'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
