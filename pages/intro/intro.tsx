@@ -10,8 +10,8 @@ import
 from '@mui/material'
 import styles from '../../styles/intro.module.scss'
 import Image from 'next/image'
-import intro1 from '../../public/static/intro1.png'
-import intro2 from '../../public/static/intro2.png'
+import intro1 from '../../public/static/intro1.webp'
+import intro2 from '../../public/static/intro2.webp'
 import { useEffect, useState } from 'react'
 interface iProps {open:boolean,setOpen:Function}
 const Intro =({open,setOpen}:iProps) =>{
