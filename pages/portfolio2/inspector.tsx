@@ -9,7 +9,7 @@ import  ArrowLeft   from '@material-ui/icons/ArrowLeft'
 import ArrowRight from '@material-ui/icons/ArrowRight'
 import styles from '../../styles/inspector.module.scss'
 import { useEffect, useState } from 'react'
-import Image from 'next/image'
+
 interface Iprops {open:boolean 
     ,setOpen:Function,selectedImage:number
     ,imgs:string[],selectImage:Function}

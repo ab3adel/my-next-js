@@ -1,4 +1,4 @@
-import {motion,Variants,useAnimation, MotionConfig} from 'framer-motion'
+import {motion,Variants,useAnimation} from 'framer-motion'
 import Grid from '@mui/material/Grid'
 import styles from '../../styles/portfolio.module.scss'
 import { useEffect, useState } from 'react'
@@ -60,9 +60,6 @@ const rootGrow:Variants= {
         controlRoot.start('night')
     }
    },[inView])
-    const hovered= (str:string)=>{
-        setHoveredName(str)
-    }
 
     return (
 

@@ -1,6 +1,6 @@
 
 import {motion,Variants,useAnimation} from 'framer-motion'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState ,useCallback } from 'react'
 
 import styles from '../../styles/portfolio.module.scss'
 interface iProps {
@@ -154,24 +154,24 @@ for (let i =0;i<11;i++) {
 
       }  
     },[])
-    const sunRise =()=>{
+    const sunRise =useCallback(()=>{
         controlSun.start('sunRise')
         controlMoon.start('moonDown')
         controlBrighness.start('day')
         controlStar.start('starOff')
   
       
-    }
-    const sunDawn = ()=>{
+    },[])
+    const sunDawn = useCallback(()=>{
         controlSun.start('sunDawn')
         controlMoon.start('moonRise')
         controlBrighness.start('night')
         controlStar.start('starGlowing')
-    }
-    const shakeAll=()=>{
+    },[])
+    const shakeAll=useCallback(()=>{
         controlFruits.start('shakeFruit')
         
-    }
+    },[])
   
     const handleSelectedImage=(num:number)=>{
         setInspectorOptions(pre=>({...pre,selectedImage:num,open:true,id}))

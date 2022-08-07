@@ -287,12 +287,14 @@ if (loaded) {
               <AboutMe />
             </TabPanel>
           </Grid>
-          <Caution open={openRate} setOpen={setOpenRate}
-           data={rateInfo}
-           addVote={sendVote}
-           isAdmin={visitor.admin}
-           loading={sendStatus.loading}
-           done={sendStatus.done}
+          <Caution 
+            open={openRate} 
+            setOpen={setOpenRate}
+            data={rateInfo}
+            addVote={sendVote}
+            isAdmin={visitor.admin}
+            loading={sendStatus.loading}
+            done={sendStatus.done}
            />
            {
             !(visitor.admin || visitor.user || !canVote)
