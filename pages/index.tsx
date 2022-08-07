@@ -7,14 +7,15 @@ import TabPanel from './tools/tabs/tabPanel'
 import  ShowChart  from '@material-ui/icons/ShowChart'
 import Person from '@material-ui/icons/Person'
 import {motion,useAnimation} from 'framer-motion'
-import AboutMe from './aboutMe/aboutMe'
 import WaitPage from './tools/waitPage/waitPage'
-import Caution from './caution'
-
-import {useCookies} from 'react-cookie'
+import dynamic from 'next/dynamic'
+import useCookies from 'react-cookie/lib/useCookies'
 import {animateContext} from './_app'
 import Intro from './intro/intro'
-import LogIn from './admin/admin'
+
+const AboutMe= dynamic(()=>import ('./aboutMe/aboutMe'))
+const LogIn = dynamic(()=>import('./admin/admin'))
+const Caution =dynamic(()=>import ('./caution'))
 interface iField {[key:string]:string}
 let arr =['/static/me1.png','/static/tree.png'
          ,'/static/root.png','/static/sun.png',
