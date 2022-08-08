@@ -1,15 +1,12 @@
 import { AppProps } from "next/app"
 import '../styles/global.css'
 import React, {useState,createContext} from 'react'
-
 import Divider from '@mui/material/Divider'
 import Grid from '@mui/material/Grid'
 import Header from './header'
-
 import {CookiesProvider} from 'react-cookie'
+
 export const animateContext= createContext(null)
-
-
  const  App =  ({Component,pageProps}:AppProps) =>{
 
 const [openRate,setOpenRate]=useState(false)

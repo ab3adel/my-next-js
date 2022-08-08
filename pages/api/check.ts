@@ -47,7 +47,7 @@ export default async function handler (req:NextApiRequest,res:NextApiResponse) {
                                 
                      
                      
-                         let data = await RateObj.find()
+                         let data = await  RateObj.find()
                       
                        res.send({admin:1,data:data[0]})
                     }

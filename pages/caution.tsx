@@ -1,8 +1,6 @@
 
 
-import ThumbUp from '@material-ui/icons/ThumbUp'
-import Update  from '@material-ui/icons/Update'
-import  AddCircle from '@material-ui/icons/AddCircle'
+import {ThumbUp,Update,AddCircle} from '@mui/icons-material'
 import Dialog from '@mui/material/Dialog'
 import DialogContent from '@mui/material/DialogContent'
 import DialogActions from '@mui/material/DialogActions'

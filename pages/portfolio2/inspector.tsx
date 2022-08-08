@@ -3,12 +3,9 @@ import Dialog from '@mui/material/Dialog'
 import DialogContent from '@mui/material/DialogContent'
 import DialogActions from '@mui/material/DialogActions'
 
-
-import Close from '@material-ui/icons/Close'
-import  ArrowLeft   from '@material-ui/icons/ArrowLeft'
-import ArrowRight from '@material-ui/icons/ArrowRight'
+import { ArrowRight,ArrowLeft,Close } from '@mui/icons-material'
 import styles from '../../styles/inspector.module.scss'
-import { useEffect, useState } from 'react'
+import {  useState } from 'react'
 
 interface Iprops {open:boolean 
     ,setOpen:Function,selectedImage:number
@@ -18,7 +15,7 @@ interface Iprops {open:boolean
     let {open,setOpen
           ,imgs,selectedImage,
         selectImage}=props
-    let [imgsArr,setImgsArr]=useState([''])
+   
    const handleArrowClicked =(str:string)=>{
     if (str === 'left') {
         if (selectedImage === 0) return

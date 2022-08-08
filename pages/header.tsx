@@ -1,10 +1,8 @@
 
 import Toolbar from '@mui/material/Toolbar'
 import Icon from '@mui/material/Icon'
-import LinkedIn from '@material-ui/icons/LinkedIn'
-import GitHub from '@material-ui/icons/GitHub'
-import Star from '@material-ui/icons/Star'
-import Person from '@material-ui/icons/Person'
+
+import {Person,Star,GitHub,LinkedIn} from '@mui/icons-material'
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from '../styles/header.module.scss'
@@ -89,7 +87,7 @@ const Header =({setOpenRate,canVote,setOpenLogIn,visitor}:iProps)=>{
 
                <Grid item xs={4}>
 
-                        <a href ="https://www.linkedin.com/in/mohammad-ismael-755ba4199/"
+                        <a href ="https://www.linkedin.com/in/mohammad-ismaeel-755ba4199/"
                         className={styles.link} >
                               LinkedIn
                               <Icon color="inherit" >
