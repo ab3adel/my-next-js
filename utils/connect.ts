@@ -1,4 +1,4 @@
-import { ContactSupportOutlined } from "@material-ui/icons"
+
 import mongoose, {Mongoose} from 'mongoose'
 
 async function connectToDB () {
